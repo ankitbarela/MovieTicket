@@ -1,0 +1,33 @@
+.banner{
+    background-image: url("avtar2.jpg");
+    height: 675px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    /* float: right;
+    width: 76%; */
+ }
+
+ /* .select-city{
+    margin-top: 19%;
+    float: left;
+    margin-left: 6%;
+    width: 20%;
+    height: 68px;
+    background-color: darkblue;
+    font-size: 28px;
+ } */
+
+ .select-city{
+    margin-top: 16%;
+    float: left;
+    margin-left: 3%;
+ }
+
+ .select-city .discription{
+    color: ghostwhite;
+    font-size:20px;
+    width: 34%;
+    font-weight: 800;
+ }
