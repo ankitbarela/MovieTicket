@@ -5,29 +5,37 @@ import { Link } from 'react-router-dom';
 
 
 function City() {
-  const   [cities, setCities] = useState([]);
+    const [items, setItems] = useState([])
     useEffect(() => {
         fetch("https://localhost:44366/api/City")
-          .then(res => res.json())
-          .then(
-            (result) => {
-               setCities(result);
-               console.log(cities);
-               console.log(result);
-            }
-          )
-      }, [])
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    setItems(result);
+                }
+            )
 
+    }, [])
+
+    const listItems = items.map((number) =>
+        <Link to="/movie" state={{ cityId: number.cityId }}>{number.cityName}</Link>
+    );
     return (
         <>
-        <div className="city">
-                <h1>this is city page</h1>
-                <div className="cityies">
-                {cities.map(city =>{
-                    <Link>{city.CityName}</Link>
-                })}
+            <div className="city">
+                <h1>Choose Your City</h1>
+                <div className="cityies row">
+                    {items.map((city) =>
+                        <div className='col-md-3'>
+                            <img src='/images/city-image.jpeg'  alt='not uplaoded'/>
+                            <div className='city-name'>
+                              <Link to="/movie" state={{ cityId: city.cityId }}>{city.cityName}</Link>
+                            </div>
+                        </div>
+                    )
+                    }
                 </div>
-         </div>
+            </div>
         </>
     );
 }
