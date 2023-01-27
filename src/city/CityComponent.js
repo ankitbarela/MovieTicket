@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 
 
-function City() {
+function City(props) {
     const [items, setItems] = useState([])
     useEffect(() => {
         fetch("https://localhost:44366/api/City")
@@ -17,19 +17,21 @@ function City() {
 
     }, [])
 
-    const listItems = items.map((number) =>
-        <Link to="/movie" state={{ cityId: number.cityId }}>{number.cityName}</Link>
-    );
+    function handlerCity(e) {
+        props.onSelect(e.target.value);
+        props.onLoad(false);
+    }
+
     return (
         <>
             <div className="city">
-                <h1>Choose Your City</h1>
+                <h5 className='heading'>Choose Your City</h5>
                 <div className="cityies row">
                     {items.map((city) =>
-                        <div className='col-md-3'>
-                            <img src='/images/city-image.jpeg'  alt='not uplaoded'/>
+                        <div className='col-md-3 small-img'>
+                            <img src='/images/ncr.avif' alt='not uplaoded' />
                             <div className='city-name'>
-                              <Link to="/movie" state={{ cityId: city.cityId }}>{city.cityName}</Link>
+                                <Link to="/movie" state={{ cityId: city.cityId }}>{city.cityName}</Link>
                             </div>
                         </div>
                     )
