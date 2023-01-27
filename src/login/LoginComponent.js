@@ -17,10 +17,12 @@ function Login() {
     const handleSubmit = () => {
         fetch("https://localhost:44366/api/Login", {
             method: 'POST',
+            mode:'no-cors',
             headers: { 'access-control-allow-origin' :'*',
             'Access-Control-Allow-Headers': '*',
             'Access-Control-Allow-Methods': '*',
-            'Content-Type': 'application/json' },
+            'Content-Type': 'application/json'
+        },
             body: JSON.stringify(inputs)
         }).then((response)=>{
             response.json().then((result)=>{
