@@ -13,7 +13,7 @@ function App() {
   return (
     <>
       <div className="Header">
-        <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
+        <nav className="navbar navbar-expand-sm background-color navbar-dark">
           <div className="container-fluid">
             <ul className="navbar-nav">
               <li className="nav-item">
@@ -24,7 +24,7 @@ function App() {
             </ul>
             <ul className="navbar-nav">
               <li className="nav-item">
-                <a className="nav-link active" href="/login">Login</a>
+                <a className="nav-link active responsive-button" href="/login">Login</a>
               </li>
               <li className="nav-item">
                 <a className="nav-link active" href="/">Home</a>

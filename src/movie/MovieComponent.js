@@ -22,10 +22,10 @@ function Movie() {
 
     return (
         <div className="movie">
-            <h1>Select Your Movie</h1>
-            <div className='row'>
+            <h4>Select Your Movie</h4>
+            <div className='row movie-detail'>
             {items.map((movie) =>
-                        <div className='col-md-6'>
+                        <div className='col-md-3'>
                             <img src={`/images/${movie.imageName}.jpg`}  alt='not uplaoded'/>
                             <div className='movie-name'><b>Moive Name :</b>{movie.movieName}</div>
                             <div className='detail'><b>Director Name :</b>{movie.directorName}</div>

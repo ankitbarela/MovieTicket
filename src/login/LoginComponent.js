@@ -26,6 +26,7 @@ function Login() {
             body: JSON.stringify(inputs)
         }).then((response)=>{
             response.json().then((result)=>{
+                console.log(result);
             })
         }) .catch(err => {
             console.log(err);
@@ -35,9 +36,13 @@ function Login() {
         <>
             <div className='login'>
                 <div className='heading-text'>Login</div>
+                <div>
+                    <img src="/images/login-page.webp" alt="not uplaoded" />
+                </div>
                     <div>
                         <input
                             type="text"
+                            className='form-control'
                             name="username"
                             placeholder="User Name"
                             value={inputs.username}
@@ -47,13 +52,14 @@ function Login() {
                     <div>
                         <input
                             type="text"
+                            className='form-control'
                             name="password"
                             placeholder="Password"
                             value={inputs.password}
                             onChange={handleChange}
                         />
                     </div>
-                   <button type='button' onClick={handleSubmit}>submit</button>
+                   <button type='button' className='btn btn-primary' onClick={handleSubmit}>submit</button>
             </div>
         </>
     );

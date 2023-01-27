@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background-color: #000000;
+  color: white;
 }
 
 .App-logo {
@@ -13,6 +15,23 @@
   }
 }
 
+.background-color{
+  background-color: black !important;
+}
+
+.responsive-button{
+  width: 70px;
+    background: rgb(248, 68, 100);
+    border: 1px solid rgb(248, 68, 100);
+    border-radius: 11px;
+    height: 25px;
+    text-align: center;
+    padding-top: 0px !important;
+    margin-top: 9px;
+}
+.Header a, h1{
+  font-weight: 800;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

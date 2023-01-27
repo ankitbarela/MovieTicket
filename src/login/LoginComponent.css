@@ -9,7 +9,7 @@
 }
 
 .login input[type=text]{
-    width: 100%;
+    width: 90%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -32,4 +32,8 @@
   .heading-text{
     padding-top: 12px;
     font-size: 24px;
+  }
+
+  .login img{
+    width: 100%;
   }

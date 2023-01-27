@@ -1,5 +1,19 @@
 
 .movie img{
-   height: 450px;
-    width: 350px;
+    height: 330px;
+    width: 274px;
+}
+
+.movie h4{
+    padding-bottom: 52px;
+    padding-top: 30px;
+}
+
+.movie{
+    height: 700px;
+}
+
+.movie-detail{
+text-align: initial;
+margin-left: 12px;
 }

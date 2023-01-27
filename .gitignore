@@ -18,7 +18,8 @@
 /key.pem
 /cert.key
 /cert.crt
-
+/openssl.exe
+/openssl.exe.stackdump
 
 # misc
 .DS_Store
