@@ -12,7 +12,6 @@ function Login() {
 
     const handleChange = (e) => {
         setInputs({ ...inputs, [e.target.name]: e.target.value });
-        console.log(inputs)
     }
 
     const handleSubmit = () => {
@@ -25,7 +24,6 @@ function Login() {
             body: JSON.stringify(inputs)
         }).then((response)=>{
             response.json().then((result)=>{
-                console.warn("result",result);
             })
         }) .catch(err => {
             console.log(err);
@@ -34,8 +32,6 @@ function Login() {
 
     return (
         <>
-            <h1>{inputs.username}</h1>
-            <h1>{inputs.password}</h1>
             <div className='login'>
                 <div className='heading-text'>Login</div>
                     <div>
