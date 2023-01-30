@@ -15,9 +15,8 @@ function Login() {
     }
 
     const handleSubmit = () => {
-        fetch("https://localhost:44366/api/Login", {
+        fetch("https://localhost:7097/signin", {
             method: 'POST',
-            mode:'no-cors',
             headers: { 'access-control-allow-origin' :'*',
             'Access-Control-Allow-Headers': '*',
             'Access-Control-Allow-Methods': '*',
@@ -26,7 +25,7 @@ function Login() {
             body: JSON.stringify(inputs)
         }).then((response)=>{
             response.json().then((result)=>{
-                console.log(result);
+                console.log(result.value);
             })
         }) .catch(err => {
             console.log(err);

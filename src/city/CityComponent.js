@@ -7,20 +7,16 @@ import { Link } from 'react-router-dom';
 function City(props) {
     const [items, setItems] = useState([])
     useEffect(() => {
-        fetch("https://localhost:44366/api/City")
+        fetch("https://localhost:7097/api/City")
             .then(res => res.json())
             .then(
                 (result) => {
+                    debugger
                     setItems(result);
                 }
             )
 
     }, [])
-
-    function handlerCity(e) {
-        props.onSelect(e.target.value);
-        props.onLoad(false);
-    }
 
     return (
         <>

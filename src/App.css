@@ -29,9 +29,7 @@
     padding-top: 0px !important;
     margin-top: 9px;
 }
-.Header a, h1{
-  font-weight: 800;
-}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

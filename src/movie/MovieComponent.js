@@ -11,7 +11,7 @@ function Movie() {
     var cityId = location.state.cityId;
     useEffect(() => {
         debugger
-        fetch(`https://localhost:44366/api/Movie/${cityId}`)
+        fetch(`https://localhost:7097/api/Movie/${cityId}`)
             .then(res => res.json())
             .then(
                 (result) => {
@@ -22,7 +22,6 @@ function Movie() {
 
     return (
         <div className="movie">
-            <h4>Select Your Movie</h4>
             <div className='row movie-detail'>
             {items.map((movie) =>
                         <div className='col-md-3'>
