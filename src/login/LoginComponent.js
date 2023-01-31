@@ -14,6 +14,7 @@ function Login() {
     };
     const [inputs, setInputs] = useState(initialvalues);
     const [item, setItem] = useState({});
+    const [valid, setValid] = useState(false);
     let navigate = useNavigate(); 
 
     const handleChange = (e) => {
@@ -38,6 +39,9 @@ function Login() {
                 navigate("/");
                 window.location.reload();
                 }
+                else{
+                    setValid(true);
+                }
             })
         }).catch(err => {
             console.log(err);
@@ -53,14 +57,6 @@ function Login() {
             localStorage.removeItem('tokenKey');
         }
     }
-
-  const getAccessToken =() => {
-        let result = localStorage.getItem('tokenKey');
-        if (!result) {
-            return "";
-        }
-        return JSON.parse(result).accessToken;
-    }
  
     return (
         <>
@@ -68,6 +64,10 @@ function Login() {
                 <div>
                     <img src="/images/login-page.webp" alt="not uplaoded" />
                 </div>
+                {valid?<div className='invalid-text'>
+                 Invailed  UserName or Password 
+                </div>:<div>
+                    </div>}
                 <div>
                     <div>
                         <input

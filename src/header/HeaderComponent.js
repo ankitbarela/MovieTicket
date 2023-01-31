@@ -33,10 +33,10 @@ function Header() {
                         </ul>
                             {!isLoggedIn ? <ul className="navbar-nav">
                                 <li className="nav-item">
-                                    <a className="nav-link active responsive-button" href="/login">Login</a>
+                                    <a className="nav-link active" href="/login">Login</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link active responsive-button" href="/signin">Sign In</a>
+                                    <a className="nav-link active" href="/ragister">Sign In</a>
                                 </li>
                                 <li className="nav-item">
                                     <a className="nav-link active" href="/">Home</a>
