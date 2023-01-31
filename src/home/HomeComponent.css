@@ -1,21 +1,21 @@
-.banner{
-    background-image: url("black-background.jpg");
-    height: 675px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
- }
+.banner {
+   background-image: url("black-background.jpg");
+   height: 675px;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   position: relative;
+}
 
- .select-city{
-    margin-top: 16%;
-    float: left;
-    margin-left: 3%;
- }
+.select-city {
+   margin-top: 16%;
+   float: left;
+   margin-left: 3%;
+}
 
- .select-city .discription{
-    color: ghostwhite;
-    font-size:20px;
-    width: 34%;
-    font-weight: 800;
- }
+.select-city .discription {
+   color: ghostwhite;
+   font-size: 20px;
+   width: 34%;
+   font-weight: 800;
+}

@@ -31,6 +31,10 @@ function Movie() {
                             <div className='detail'><b>Rating :</b>{movie.rating}</div>
                             <div className='detail'><b>Producer Name :</b>{movie.producerName}</div>
                             <div className='detail'><b>Movie Type :</b>{movie.movieType}</div>
+                            <br></br>
+                            <div>
+                            <button type="button" className='btn btn-primary'>Continue</button>
+                            </div>
                         </div>
             )
             }

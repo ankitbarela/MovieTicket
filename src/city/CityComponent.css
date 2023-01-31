@@ -11,7 +11,7 @@
    -webkit-box-pack: center;
    justify-content: center;
    border: 1px solid white;
-    border-radius: 54px;
+   border-radius: 14px;
 }
 
 .cityies {
@@ -22,10 +22,7 @@
 
 .city-name a {
    font-size: 20px;
-    /* color: rgb(102, 102, 102); */
-    /* text-decoration: none; */
-    /* color: pink; */
-    font-weight: 700;
+   font-weight: 700;
 }
 
 .small-img img {
@@ -33,6 +30,6 @@
    height: 100px;
 }
 
-.heading{
+.heading {
    color: rgb(102, 102, 102);
 }
