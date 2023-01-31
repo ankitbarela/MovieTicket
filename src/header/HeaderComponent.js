@@ -1,15 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './HeaderComponent.css';
-import Popup from 'reactjs-popup';
 import { useEffect, useState } from 'react';
 
 function Header() {
-    const [show, setShow] = useState(false);
-
     const [isLoggedIn,setIsLoggedIn] = useState(false);
 
     useEffect(() => {
-        debugger
         getAuthorityToken();
     }, [])
 
@@ -38,6 +34,9 @@ function Header() {
                             {!isLoggedIn ? <ul className="navbar-nav">
                                 <li className="nav-item">
                                     <a className="nav-link active responsive-button" href="/login">Login</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a className="nav-link active responsive-button" href="/signin">Sign In</a>
                                 </li>
                                 <li className="nav-item">
                                     <a className="nav-link active" href="/">Home</a>

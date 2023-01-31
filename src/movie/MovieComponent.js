@@ -2,7 +2,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './MovieComponent.css';
 import React, { useEffect, useState } from "react";
 import { useLocation } from 'react-router-dom';
-//import Avtar from '../images/Avtar.jpg';
+import HostUrl from '../HostUrl.json'
+
 
 function Movie() {
     const location = useLocation();
@@ -11,7 +12,7 @@ function Movie() {
     var cityId = location.state.cityId;
     useEffect(() => {
         debugger
-        fetch(`https://localhost:7097/api/Movie/${cityId}`)
+        fetch(`${HostUrl.hostUrl}/Movie/${cityId}`)
             .then(res => res.json())
             .then(
                 (result) => {

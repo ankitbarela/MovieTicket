@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './CityComponent.css';
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
+import HostUrl from '../HostUrl.json'
 
 
 function City(props) {
@@ -9,7 +10,7 @@ function City(props) {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
-        fetch("https://localhost:7097/api/City")
+        fetch(`${HostUrl.hostUrl}/City`)
             .then(res => res.json())
             .then(
                 (result) => {
