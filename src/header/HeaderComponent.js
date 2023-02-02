@@ -47,7 +47,7 @@ function Header() {
                             </ul> :
                                 <ul className="navbar-nav">
                                     <li className="nav-item">
-                                        <a className="nav-link active responsive-button" onClick={logout}  href="/">Logout</a>
+                                        <a className="nav-link active" onClick={logout}  href="/">Logout</a>
                                     </li>
                                     <li className="nav-item">
                                         <a className="nav-link active" href="/">Home</a>

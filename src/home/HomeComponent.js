@@ -11,7 +11,7 @@ function Home() {
   const [item, setItem] = useState();
 
   useEffect(() => {
-    setTimeout(() => setShow(true), 1000);
+    setTimeout(() => setShow(true), 2000);
   }, []);
 
   function handleCityName(cityName) {

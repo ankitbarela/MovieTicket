@@ -34,6 +34,9 @@ function Ragister() {
             body: JSON.stringify(inputs)
         }).then((response) => {
             response.json().then((result) => {
+                if (result.statusCode == 200) {
+                    setSuccessSignUp(true)
+                }
                 console.log(result)
             })
         }).catch(err => {
@@ -48,6 +51,7 @@ function Ragister() {
                 <h4>
                     Sign In
                 </h4>
+                {successSignUp?<div className='success-text'>SuccessFull Sign In</div>:<div></div>}
                 <div>
                     <input
                         type="text"

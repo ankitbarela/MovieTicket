@@ -5,12 +5,14 @@ import { useNavigate } from "react-router-dom";
 import HostUrl from '../HostUrl.json'
 
 function ResetPassword() {
-    
+
     const initialvalues = {
         email: "",
-        password :""
+        password: ""
     };
     const [inputs, setInputs] = useState(initialvalues);
+    const [item, setItem] = useState(false);
+
 
     const handleChange = (e) => {
         setInputs({ ...inputs, [e.target.name]: e.target.value });
@@ -28,6 +30,9 @@ function ResetPassword() {
             body: JSON.stringify(inputs)
         }).then((response) => {
             response.json().then((result) => {
+                if (result.statusCode != 200) {
+                    setItem(true)
+                }
                 console.log(result)
             })
         }).catch(err => {
@@ -37,35 +42,39 @@ function ResetPassword() {
 
     return (
         <>
-        <div className='reset-password'>
-            <div>
-                <h4>
-                    Change Password
-                </h4>
+            <div className='reset'>
                 <div>
-                    <input
-                        type="text"
-                        className='form-control'
-                        name="email"
-                        placeholder="Email"
-                        value={inputs.email}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div>
-                    <input
-                        type="text"
-                        className='form-control'
-                        name="password"
-                        placeholder="Password"
-                        value={inputs.password}
-                        onChange={handleChange}
-                    />
-                </div>
+                    <div>
+                        <img src="/images/login-page.webp" alt="not uplaoded" />
+                    </div>
+                    {item ? <div className='invalid-text'>
+                    Choose Somthing else  
+                </div> : <div>
+                </div>}
+                    <div>
+                        <input
+                            type="text"
+                            className='form-control'
+                            name="email"
+                            placeholder="Email"
+                            value={inputs.email}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div>
+                        <input
+                            type="text"
+                            className='form-control'
+                            name="password"
+                            placeholder="New Password"
+                            value={inputs.password}
+                            onChange={handleChange}
+                        />
+                    </div>
                     <button type='button' className='btn btn-primary' onClick={handleSubmit}>submit</button>
+                </div>
             </div>
-        </div>
-    </>
+        </>
     );
 }
 
