@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 function Login() {
     const userPerformance = {
-        _token :null
+        _token: null
     };
     const initialvalues = {
         username: "",
@@ -15,7 +15,7 @@ function Login() {
     const [inputs, setInputs] = useState(initialvalues);
     const [item, setItem] = useState({});
     const [valid, setValid] = useState(false);
-    let navigate = useNavigate(); 
+    let navigate = useNavigate();
 
     const handleChange = (e) => {
         setInputs({ ...inputs, [e.target.name]: e.target.value });
@@ -34,12 +34,12 @@ function Login() {
         }).then((response) => {
             response.json().then((result) => {
                 if (result.statusCode == 200) {
-                 updateToken(result.value);
-                setItem(result);
-                navigate("/");
-                window.location.reload();
+                    updateToken(result.value);
+                    setItem(result);
+                    navigate("/");
+                    window.location.reload();
                 }
-                else{
+                else {
                     setValid(true);
                 }
             })
@@ -48,8 +48,8 @@ function Login() {
         });
     }
 
-    const updateToken =(token)=>{
-       userPerformance._token = token;
+    const updateToken = (token) => {
+        userPerformance._token = token;
         if (token) {
             localStorage.setItem('tokenKey', JSON.stringify(token));
         }
@@ -57,17 +57,17 @@ function Login() {
             localStorage.removeItem('tokenKey');
         }
     }
- 
+
     return (
         <>
             <div className='login'>
                 <div>
                     <img src="/images/login-page.webp" alt="not uplaoded" />
                 </div>
-                {valid?<div className='invalid-text'>
-                 Invailed  UserName or Password 
-                </div>:<div>
-                    </div>}
+                {valid ? <div className='invalid-text'>
+                    Invailed  UserName or Password
+                </div> : <div>
+                </div>}
                 <div>
                     <div>
                         <input
@@ -89,9 +89,10 @@ function Login() {
                             onChange={handleChange}
                         />
                     </div>
-                    {/* <a href="/"> */}
+                    <a href="/reset" className='reset-password'>Reset Password</a>
+                    <div>
                         <button type='button' className='btn btn-primary' onClick={handleSubmit}>submit</button>
-                    {/* </a> */}
+                    </div>
                 </div>
             </div>
         </>

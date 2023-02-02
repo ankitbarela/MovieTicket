@@ -8,6 +8,7 @@ import TermsCondition from './terms-condition/TermsConditionComponent';
 import Login from './login/LoginComponent';
 import Ragister from './ragister/RagisterComponent';
 import { useState } from 'react';
+import ResetPassword from './reset-password/ResetComponent';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
             <Route exact path="/t" element={<TermsCondition />}></Route>
             <Route exact path="/login" element={<Login />}></Route>
             <Route exact path="/ragister" element={<Ragister />}></Route>
+            <Route exact path="/reset" element={<ResetPassword />}></Route>
           </Routes>
         </div>
       </BrowserRouter>

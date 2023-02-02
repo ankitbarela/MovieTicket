@@ -42,3 +42,10 @@
 .invalid-text{
   color: red;
 }
+
+.reset-password{
+  color: blue;
+  padding-bottom: 12px;
+  opacity: 0.5;
+  font-size: 14px;
+}
