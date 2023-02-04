@@ -13,7 +13,6 @@ function ResetPassword() {
     const [inputs, setInputs] = useState(initialvalues);
     const [item, setItem] = useState(false);
 
-
     const handleChange = (e) => {
         setInputs({ ...inputs, [e.target.name]: e.target.value });
     }
@@ -33,7 +32,6 @@ function ResetPassword() {
                 if (result.statusCode != 200) {
                     setItem(true)
                 }
-                console.log(result)
             })
         }).catch(err => {
             console.log(err);

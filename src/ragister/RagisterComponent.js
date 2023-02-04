@@ -17,6 +17,7 @@ function Ragister() {
     };
     const [inputs, setInputs] = useState(initialvalues);
     const [successSignUp, setSuccessSignUp] = useState(false);
+    const [success, setSuccess] = useState(false);
 
     const handleChange = (e) => {
         setInputs({ ...inputs, [e.target.name]: e.target.value });
@@ -36,8 +37,11 @@ function Ragister() {
             response.json().then((result) => {
                 if (result.statusCode == 200) {
                     setSuccessSignUp(true)
+                    setSuccess(false)
                 }
-                console.log(result)
+                else{
+                    setSuccess(true)
+                }
             })
         }).catch(err => {
             console.log(err);
@@ -49,9 +53,10 @@ function Ragister() {
         <div className='sign-in'>
             <div>
                 <h4>
-                    Sign In
+                    Sign Up
                 </h4>
                 {successSignUp?<div className='success-text'>SuccessFull Sign In</div>:<div></div>}
+                {success?<div className='success-text'>fill all fields or Use anather email</div>:<div></div>}
                 <div>
                     <input
                         type="text"
