@@ -34,7 +34,7 @@ function Movie() {
                             <div className='detail'><b>Movie Type :</b>{movie.movieType}</div>
                             <br></br>
                             <div>
-                            <button type="button" className='btn btn-primary'>Continue</button>
+                            <button type="button" className='btn btn-primary'>Book Ticket</button>
                             </div>
                         </div>
             )
