@@ -31,12 +31,12 @@ function Movie() {
                             <img src={`/images/${movie.imageName}.jpg`}  alt='not uplaoded'/>
                             <div className='movie-name'><b>Moive Name :</b>{movie.movieName}</div>
                             <div className='detail'><b>Director Name :</b>{movie.directorName}</div>
-                            <div className='detail'><b>Rating :</b>{movie.rating}</div>
+                            <div className='detail'><   b>Rating :</b>{movie.rating}</div>
                             <div className='detail'><b>Producer Name :</b>{movie.producerName}</div>
                             <div className='detail'><b>Movie Type :</b>{movie.movieType}</div>
                             <br></br>
                             <div>
-                            <Link to="/show" state={{ cityId: cityId , movieId: 6}}>Book Ticket</Link>
+                            <Link to="/show" state={{ cityId: cityId , movieId: movie.movieId}}>Book Ticket</Link>
                             </div>
                         </div>
             )
