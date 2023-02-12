@@ -3,6 +3,8 @@ import './MovieComponent.css';
 import React, { useEffect, useState } from "react";
 import { useLocation } from 'react-router-dom';
 import HostUrl from '../HostUrl.json'
+import { Link } from 'react-router-dom';
+
 
 
 function Movie() {
@@ -34,7 +36,7 @@ function Movie() {
                             <div className='detail'><b>Movie Type :</b>{movie.movieType}</div>
                             <br></br>
                             <div>
-                            <button type="button" className='btn btn-primary'>Book Ticket</button>
+                            <Link to="/show" state={{ cityId: cityId , movieId: 6}}>Book Ticket</Link>
                             </div>
                         </div>
             )
