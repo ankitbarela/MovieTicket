@@ -5,6 +5,9 @@ function Seat() {
     return(
         <>
         <h1>this is seat page</h1>
+        <div className='seat-page'>
+           <a href="">1</a>
+        </div>
         </>
     );
 }

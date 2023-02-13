@@ -11,6 +11,7 @@ function Show() {
     var movieId = location.state.movieId;
 
     const [items, setItems] = useState([])
+    const [shows, setShows] = useState([])
 
 
     useEffect(() => {
@@ -22,7 +23,24 @@ function Show() {
                     setItems(result);
                 }
             )
+            getShows();
     }, [])
+
+    var getShows = ()=>{
+        fetch(`${HostUrl.hostUrl}/Shows`)
+        .then(res => res.json())
+        .then(
+            (result) => {
+                setShows(result);
+            }
+        )
+    }
+
+    const filterTheater = items.filter(theater => theater.movieId == movieId).map(filteredTheater => (
+        <li>
+          {filteredTheater.theaterName}
+        </li>
+      ))
 
     return(
         <>
@@ -30,6 +48,11 @@ function Show() {
         <h4>City Id : {cityId}</h4>
         <h4>Movie Id : {movieId}</h4>
         <h4>{items.length}</h4>
+        <h4>{shows.length}</h4>
+        {shows.map((show)=>
+            <div>{show.duretion}</div>
+        )}
+        {filterTheater}
         </>
     );
 }
