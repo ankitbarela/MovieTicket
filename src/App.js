@@ -8,9 +8,9 @@ import TermsCondition from './terms-condition/TermsConditionComponent';
 import Login from './login/LoginComponent';
 import Ragister from './ragister/RagisterComponent';
 import ResetPassword from './reset-password/ResetComponent';
-import Order from './order/OrderComponent';
 import Seat from './seats/SeatComponent';
 import Show from './shows/ShowComponent';
+import Booking from './booking/BookingSummary';
 
 
 function App() {
@@ -31,7 +31,7 @@ function App() {
             <Route exact path="/reset" element={<ResetPassword />}></Route>
             <Route exact path="/show" element={<Show />}></Route>
             <Route exact path="/seat" element={<Seat />}></Route>
-            <Route exact path="/order" element={<Order />}></Route>
+            <Route exact path="/booking" element={<Booking />}></Route>
           </Routes>
         </div>
       </BrowserRouter>
