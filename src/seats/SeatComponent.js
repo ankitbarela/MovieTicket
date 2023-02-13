@@ -10,7 +10,6 @@ function Seat() {
     var theaterId = location.state.theaterId;
     var movieId = location.state.movieId;
     const [items, setItems] = useState([])
-    const [screen, setScreen] = useState()
 
     useEffect(() => {
         fetch(`${HostUrl.hostUrl}/Screen`)
@@ -20,23 +19,23 @@ function Seat() {
                     setItems(result);
                 }
             )
-            getScreen();
     }, [])
-       
-      function getScreen(){
-        items.filter(screen => screen.movieId == movieId && screen.theaterId == theaterId).map(filteredTheater => (
-            setScreen(filteredTheater)
-          ))
-      }
 
-    return(
+    const getScreen =
+        items.filter(screen => screen.movieId == movieId && screen.theaterId == theaterId).map(filteredTheater => (
+            [...Array(filteredTheater.totalSeats)].map((e, i) =><a href="#" key={i}>1</a>)
+        ))
+
+    return (
         <>
-        <h1>this is seat page and the show id is {showId} theater id is {theaterId} movie id is {movieId}</h1>
-        <h1>{items.length}</h1>
-        <div className='seat-page'>
-           <a href="">1</a>
-        </div>
-        {screen.screenNumber}
+            <h1>this is seat page and the show id is {showId} theater id is {theaterId} movie id is {movieId}</h1>
+            <h1>{items.length}</h1>
+            <div className='seat-page'>
+                <div>
+                {getScreen}
+                </div>
+            </div>
+            
         </>
     );
 }

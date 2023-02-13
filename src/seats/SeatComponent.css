@@ -2,4 +2,10 @@
 text-decoration: none;
 border: 1px solid;
 padding: 1px;
+margin-left: 18px;
+}
+
+.seat-page{
+    margin-bottom: 20px;
+    display: inline-flex;
 }
