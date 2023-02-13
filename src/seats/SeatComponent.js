@@ -48,7 +48,7 @@ function Seat() {
                 {getScreen}
             </div>
             <div>
-                <Link to="/booking" state={{ seats : numberOfSeats, price : priceOfOneSeat}}>Book Ticket</Link>
+                <Link to="/booking" state={{ seats : numberOfSeats, price : priceOfOneSeat, idOfTheater : theaterId}}>Book Ticket</Link>
             </div>
         </>
     );

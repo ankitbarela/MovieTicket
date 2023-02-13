@@ -10,6 +10,7 @@ function Show() {
     const location = useLocation();
     var cityId = location.state.cityId;
     var movieId = location.state.movieId;
+    var movieName = location.state.movieName;
 
     const [items, setItems] = useState([])
     const [shows, setShows] = useState([])
@@ -25,6 +26,7 @@ function Show() {
                 }
             )
             getShows();
+            localStorage.setItem('booking',movieName);
     }, [])
 
     var getShows = ()=>{

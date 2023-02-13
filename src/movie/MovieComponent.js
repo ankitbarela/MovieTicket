@@ -36,7 +36,7 @@ function Movie() {
                             <div className='detail'><b>Movie Type :</b>{movie.movieType}</div>
                             <br></br>
                             <div>
-                            <Link to="/show" state={{ cityId: cityId , movieId: movie.movieId}}>Book Ticket</Link>
+                            <Link to="/show" state={{ cityId: cityId , movieId: movie.movieId , movieName : movie.movieName}}>Book Ticket</Link>
                             </div>
                         </div>
             )
