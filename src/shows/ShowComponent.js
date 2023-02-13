@@ -53,7 +53,7 @@ function Show() {
        <div className='theater-show'>
        {filterTheater}
        {shows.map((show)=>
-            <span><Link to="/seat" state={{showId: show.showId}}>{show.duretion}</Link></span>
+            <span><Link to="/seat" state={{showId: show.showId , movieId: show.movieId, theaterId: show.theaterId}}>{show.duretion}</Link></span>
         )}
        </div>
         </>
