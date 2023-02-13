@@ -3,6 +3,7 @@ import './ShowComponent.css';
 import { useLocation } from 'react-router-dom';
 import React, { useEffect, useState } from "react";
 import HostUrl from '../HostUrl.json'
+import { Link } from 'react-router-dom';
 
 
 function Show() {
@@ -37,9 +38,9 @@ function Show() {
     }
 
     const filterTheater = items.filter(theater => theater.movieId == movieId).map(filteredTheater => (
-        <li>
+        <span>
           {filteredTheater.theaterName}
-        </li>
+        </span>
       ))
 
     return(
@@ -49,10 +50,12 @@ function Show() {
         <h4>Movie Id : {movieId}</h4>
         <h4>{items.length}</h4>
         <h4>{shows.length}</h4>
-        {shows.map((show)=>
-            <div>{show.duretion}</div>
+       <div className='theater-show'>
+       {filterTheater}
+       {shows.map((show)=>
+            <span><Link to="/seat" state={{showId: show.showId}}>{show.duretion}</Link></span>
         )}
-        {filterTheater}
+       </div>
         </>
     );
 }
