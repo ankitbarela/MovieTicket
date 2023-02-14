@@ -40,22 +40,25 @@ function Show() {
     }
 
     const theaters = items.filter(theater => theater.movieId == movieId).map(filteredTheater => (
-
         theaterName = filteredTheater.theaterName
+    ))
+
+    const filterShow = shows.filter(show => show.movieId == movieId).map(filteredShow => (
+        <span><Link to="/seat" state={{ showId: filteredShow.showId, movieId: filteredShow.movieId, theaterId: filteredShow.theaterId, theaterName: theaterName }}>{filteredShow.duretion}</Link></span>
     ))
 
     return (
         <>
             <div className='theater-show'>
                 <div className='page-heading'>Theater</div>
-                <div>
+                <div className='row'>
                     {theaters.map((theater) =>
-                        <div>
+                        <div className='col-md-2'>
                             <img src='/images/theater.jpeg' alt='not uplaoded' />
-                            <div className='theater-name'>{theater}:</div>
-                            {shows.map((show) =>
-                                <span><Link to="/seat" state={{ showId: show.showId, movieId: show.movieId, theaterId: show.theaterId, theaterName: theaterName }}>{show.duretion}</Link></span>
-                            )}  1
+                            <div>
+                                <span className='theater-name'>{theater}:</span>
+                                {filterShow}
+                            </div>
                         </div>
                     )}
                 </div>
