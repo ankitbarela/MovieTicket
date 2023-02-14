@@ -3,6 +3,9 @@
     border: 1px solid;
     padding: 1px;
     margin-left: 18px;
+    width: 30px;
+    margin-top: 12px;
+    display: inline-block;
 }
 
 .seat-page {
@@ -14,5 +17,16 @@
     background: green;
     border-color: green;
     color: white;
+}
+
+.submit-link{
+    border: 1px solid green !important;
+    width: 100px !important;
+    background: green;
+    color: white;
+}
+
+.seats{
+    margin-top: 30px;
 }
 

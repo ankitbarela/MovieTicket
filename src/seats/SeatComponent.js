@@ -32,7 +32,7 @@ function Seat() {
         setPricePerOneSeat(totalPrice)
         var seatCount = totalPrice / Number(price)
         setNumberOfSeats(seatCount)
-    }   
+    }
 
     const getScreen =
         items.filter(screen => screen.movieId == movieId && screen.theaterId == theaterId).map(filteredTheater => (
@@ -41,15 +41,15 @@ function Seat() {
 
     return (
         <>
-            <h4>select seats</h4>
-            <span className='seat-page'>
-                {getScreen}
+            <span className='seat-page row'>
+                <div className='seats col-md-3'>
+                    {getScreen}
+                    <div>count : {numberOfSeats}</div>
+                    <div>
+                        <Link className='submit-link' to="/booking" state={{ seats: numberOfSeats, price: priceOfOneSeat, idOfTheater: theaterId, theaterName: theaterName }}>Book Ticket</Link>
+                    </div>
+                </div>
             </span>
-            
-            <div>count : {numberOfSeats}</div>
-            <div>
-                <Link to="/booking" state={{ seats : numberOfSeats, price : priceOfOneSeat, idOfTheater : theaterId , theaterName : theaterName}}>Book Ticket</Link>
-            </div>
         </>
     );
 }
