@@ -1,4 +1,4 @@
-.seat-page a {
+ .seat-page a {
     text-decoration: none;
     border: 1px solid;
     padding: 1px;
@@ -8,7 +8,7 @@
 .seat-page {
     margin-bottom: 20px;
     display: inline-flex;
-}
+} 
 
 .seat-page a:focus {
     background: green;

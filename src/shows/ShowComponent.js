@@ -18,7 +18,6 @@ function Show() {
 
 
     useEffect(() => {
-        debugger
         fetch(`${HostUrl.hostUrl}/Theater`)
             .then(res => res.json())
             .then(
@@ -26,41 +25,37 @@ function Show() {
                     setItems(result);
                 }
             )
-            getShows();
-            localStorage.setItem('booking',movieName);
+        getShows();
+        localStorage.setItem('booking', movieName);
     }, [])
 
-    var getShows = ()=>{
+    var getShows = () => {
         fetch(`${HostUrl.hostUrl}/Shows`)
-        .then(res => res.json())
-        .then(
-            (result) => {
-                setShows(result);
-            }
-        )
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    setShows(result);
+                }
+            )
     }
 
-    const filterTheater = items.filter(theater => theater.movieId == movieId).map(filteredTheater => (
+    const theater = items.filter(theater => theater.movieId == movieId).map(filteredTheater => (
 
-      theaterName =  filteredTheater.theaterName
-        // <span ref={theaterName}>
-        //   {filteredTheater.theaterName}
-        // </span>
-      ))
+        theaterName = filteredTheater.theaterName
+    ))
 
-    return(
+    return (
         <>
-        <h1>this is show page</h1>
-        <h4>City Id : {cityId}</h4>
-        <h4>Movie Id : {movieId}</h4>
-        <h4>{items.length}</h4>
-        <h4>{shows.length}</h4>
-       <div className='theater-show'>
-       {filterTheater}
-       {shows.map((show)=>
-            <span><Link to="/seat" state={{showId: show.showId , movieId: show.movieId, theaterId: show.theaterId ,theaterName :theaterName}}>{show.duretion}</Link></span>
-        )}
-       </div>
+            <div className='theater-show'>
+                <div className='page-heading'>Theater</div>
+                <div>
+                    <span className='theater-name'>{theater}:</span>
+                    {shows.map((show) =>
+                        <span><Link to="/seat" state={{ showId: show.showId, movieId: show.movieId, theaterId: show.theaterId, theaterName: theaterName }}>{show.duretion}</Link></span>
+                    )}
+                </div>
+
+            </div>
         </>
     );
 }

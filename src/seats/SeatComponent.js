@@ -41,10 +41,11 @@ function Seat() {
 
     return (
         <>
-            <h1>select seats</h1>
-            <div className='seat-page'>
+            <h4>select seats</h4>
+            <span className='seat-page'>
                 {getScreen}
-            </div>
+            </span>
+            
             <div>count : {numberOfSeats}</div>
             <div>
                 <Link to="/booking" state={{ seats : numberOfSeats, price : priceOfOneSeat, idOfTheater : theaterId , theaterName : theaterName}}>Book Ticket</Link>

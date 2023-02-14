@@ -1,3 +1,16 @@
 .theater-show{
-    display: block;
+    text-align: initial;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.theater-show .page-heading{
+    font-size: 24px;
+    color: brown;
+}
+
+.theater-name{
+    color: black;
+    font-weight: bold;
+    margin-right: 20px;
 }
