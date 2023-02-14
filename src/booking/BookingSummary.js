@@ -12,9 +12,9 @@ function Booking() {
     var totalPrice = location.state.price;
     var theaterId = location.state.idOfTheater;
     const [items, setItems] = useState([])
+    const [movieName, SetMovieName] = useState("")
 
     useEffect(() => {
-        debugger
         fetch(`${HostUrl.hostUrl}/Theater`)
             .then(res => res.json())
             .then(
@@ -22,17 +22,38 @@ function Booking() {
                     setItems(result);
                 }
             )
+        var nameofMovie = localStorage.getItem('booking');
+        SetMovieName(nameofMovie);
     }, [])
-    
+
     const filterTheater = items.filter(theater => theater.theaterId == theaterId).map(filteredTheater => (
-        <div>
+        <span>
             {filteredTheater.theaterName}
-        </div>
-      ))
-    return(
+        </span>
+    ))
+    return (
         <>
-        <h1>this is booking summary page price is {totalPrice} number of seats {numberOfSeats}</h1>
-        {filterTheater}
+            <h1>Booking Detail</h1>
+            <div className='main-container'>
+                <div className='detail'>
+                    <span className='heading'> Movie Name :</span>
+                    <span>
+                        {movieName}
+                    </span>
+                </div>
+                <div className='detail'>
+                    <span className='heading'> Theater Name :</span>
+                    {filterTheater}
+                </div>
+                <div className='detail'>
+                    <span className='heading'> total Seat :</span>
+                    <span>{numberOfSeats}</span>
+                </div>
+                <div className='detail'>
+                    <span className='heading'> Price :</span>
+                    {totalPrice}
+                </div>
+            </div>
         </>
     );
 }
