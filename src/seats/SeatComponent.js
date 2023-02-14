@@ -46,7 +46,10 @@ function Seat() {
                     {getScreen}
                     <div>count : {numberOfSeats}</div>
                     <div>
-                        <Link className='submit-link' to="/booking" state={{ seats: numberOfSeats, price: priceOfOneSeat, idOfTheater: theaterId, theaterName: theaterName }}>Book Ticket</Link>
+                        {numberOfSeats > 0 ?
+                        <Link className='submit-link' to="/booking" state={{ seats: numberOfSeats, price: priceOfOneSeat, idOfTheater: theaterId, theaterName: theaterName }}>pay {priceOfOneSeat} rs.</Link>
+                    :<div>
+                    </div>}
                     </div>
                 </div>
             </span>
