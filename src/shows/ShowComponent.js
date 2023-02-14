@@ -11,6 +11,7 @@ function Show() {
     var cityId = location.state.cityId;
     var movieId = location.state.movieId;
     var movieName = location.state.movieName;
+    var theaterName = ""
 
     const [items, setItems] = useState([])
     const [shows, setShows] = useState([])
@@ -40,9 +41,11 @@ function Show() {
     }
 
     const filterTheater = items.filter(theater => theater.movieId == movieId).map(filteredTheater => (
-        <span>
-          {filteredTheater.theaterName}
-        </span>
+
+      theaterName =  filteredTheater.theaterName
+        // <span ref={theaterName}>
+        //   {filteredTheater.theaterName}
+        // </span>
       ))
 
     return(
@@ -55,7 +58,7 @@ function Show() {
        <div className='theater-show'>
        {filterTheater}
        {shows.map((show)=>
-            <span><Link to="/seat" state={{showId: show.showId , movieId: show.movieId, theaterId: show.theaterId}}>{show.duretion}</Link></span>
+            <span><Link to="/seat" state={{showId: show.showId , movieId: show.movieId, theaterId: show.theaterId ,theaterName :theaterName}}>{show.duretion}</Link></span>
         )}
        </div>
         </>

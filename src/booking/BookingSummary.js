@@ -11,26 +11,39 @@ function Booking() {
     var numberOfSeats = location.state.seats;
     var totalPrice = location.state.price;
     var theaterId = location.state.idOfTheater;
+    var theaterName = location.state.theaterName;
+
     const [items, setItems] = useState([])
-    const [movieName, SetMovieName] = useState("")
+    const initialvalues = {
+        theaterName: theaterName,
+        movieName: localStorage.getItem('booking'),
+        numberOfSeats: numberOfSeats
+    };
+    const [inputs, setInputs] = useState(initialvalues);
 
     useEffect(() => {
-        fetch(`${HostUrl.hostUrl}/Theater`)
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    setItems(result);
-                }
-            )
-        var nameofMovie = localStorage.getItem('booking');
-        SetMovieName(nameofMovie);
+        creatBookingDetail();
     }, [])
 
-    const filterTheater = items.filter(theater => theater.theaterId == theaterId).map(filteredTheater => (
-        <span>
-            {filteredTheater.theaterName}
-        </span>
-    ))
+    const creatBookingDetail =() =>{
+        fetch(`${HostUrl.hostUrl}/BookingSummary`, {
+            method: 'POST',
+            headers: {
+                'access-control-allow-origin': '*',
+                'Access-Control-Allow-Headers': '*',
+                'Access-Control-Allow-Methods': '*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(inputs)
+        }).then((response) => {
+            response.json().then((result) => {
+              console.log(result)
+            })
+        }).catch(err => {
+            console.log(err);
+        });
+    }
+
     return (
         <>
             <h1>Booking Detail</h1>
@@ -38,16 +51,16 @@ function Booking() {
                 <div className='detail'>
                     <span className='heading'> Movie Name :</span>
                     <span>
-                        {movieName}
+                        {inputs.movieName}
                     </span>
                 </div>
                 <div className='detail'>
                     <span className='heading'> Theater Name :</span>
-                    {filterTheater}
+                    {theaterName}
                 </div>
                 <div className='detail'>
                     <span className='heading'> total Seat :</span>
-                    <span>{numberOfSeats}</span>
+                    <span>{inputs.numberOfSeats}</span>
                 </div>
                 <div className='detail'>
                     <span className='heading'> Price :</span>

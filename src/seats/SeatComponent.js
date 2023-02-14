@@ -10,6 +10,7 @@ function Seat() {
     var showId = location.state.showId;
     var theaterId = location.state.theaterId;
     var movieId = location.state.movieId;
+    var theaterName = location.state.theaterName;
     const [items, setItems] = useState([])
     const [priceOfOneSeat, setPricePerOneSeat] = useState(0)
     const [numberOfSeats, setNumberOfSeats] = useState(0)
@@ -40,7 +41,7 @@ function Seat() {
 
     return (
         <>
-            <h1>this is seat page and the show id is {showId} theater id is {theaterId} movie id is {movieId}</h1>
+            <h1>this is seat page and the show id is {showId} theater id is {theaterId} movie id is {movieId} theterName is {theaterName}</h1>
             <h1>{items.length}</h1>
             {priceOfOneSeat}<br></br>
             {numberOfSeats}
@@ -48,7 +49,7 @@ function Seat() {
                 {getScreen}
             </div>
             <div>
-                <Link to="/booking" state={{ seats : numberOfSeats, price : priceOfOneSeat, idOfTheater : theaterId}}>Book Ticket</Link>
+                <Link to="/booking" state={{ seats : numberOfSeats, price : priceOfOneSeat, idOfTheater : theaterId , theaterName : theaterName}}>Book Ticket</Link>
             </div>
         </>
     );
