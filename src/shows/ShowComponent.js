@@ -48,6 +48,7 @@ function Show() {
         <>
             <div className='theater-show'>
                 <div className='page-heading'>Theater</div>
+                <img src='/images/theater.jpeg'  alt='not uplaoded'/>
                 <div>
                     <span className='theater-name'>{theater}:</span>
                     {shows.map((show) =>
