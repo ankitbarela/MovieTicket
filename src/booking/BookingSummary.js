@@ -22,7 +22,7 @@ function Booking() {
     const [inputs, setInputs] = useState(initialvalues);
 
     useEffect(() => {
-        creatBookingDetail();
+       // creatBookingDetail();
     }, [])
 
     const creatBookingDetail =() =>{

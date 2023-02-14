@@ -1,11 +1,18 @@
-.seat-page a{
-text-decoration: none;
-border: 1px solid;
-padding: 1px;
-margin-left: 18px;
+.seat-page a {
+    text-decoration: none;
+    border: 1px solid;
+    padding: 1px;
+    margin-left: 18px;
 }
 
-.seat-page{
+.seat-page {
     margin-bottom: 20px;
     display: inline-flex;
 }
+
+.seat-page a:focus {
+    background: green;
+    border-color: green;
+    color: white;
+}
+
