@@ -22,7 +22,8 @@ function Booking() {
     const [inputs, setInputs] = useState(initialvalues);
 
     useEffect(() => {
-       // creatBookingDetail();
+       // TODO Need to uncomment this api call function
+       // creatBookingDetail();       
     }, [])
 
     const creatBookingDetail =() =>{
