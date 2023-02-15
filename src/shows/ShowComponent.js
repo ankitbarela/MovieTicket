@@ -44,7 +44,7 @@ function Show() {
     ))
 
     const filterShow = shows.filter(show => show.movieId == movieId).map(filteredShow => (
-        <span><Link to="/seat" state={{ showId: filteredShow.showId, movieId: filteredShow.movieId, theaterId: filteredShow.theaterId, theaterName: theaterName }}>{filteredShow.duretion}</Link></span>
+        <span style={{marginLeft:"30px"}}><Link to="/seat" state={{ showId: filteredShow.showId, movieId: filteredShow.movieId, theaterId: filteredShow.theaterId, theaterName: theaterName }}>{filteredShow.duretion}</Link></span>
     ))
 
     return (

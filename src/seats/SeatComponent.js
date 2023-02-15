@@ -7,10 +7,10 @@ import { Link } from 'react-router-dom';
 
 function Seat() {
     var location = useLocation();
-    var showId = location.state.showId;
     var theaterId = location.state.theaterId;
     var movieId = location.state.movieId;
     var theaterName = location.state.theaterName;
+    var movieName = localStorage.getItem('booking')
     const [items, setItems] = useState([])
     const [priceOfOneSeat, setPricePerOneSeat] = useState(0)
     const [numberOfSeats, setNumberOfSeats] = useState(0)
@@ -26,7 +26,6 @@ function Seat() {
     }, [])
 
     const seatClicked = (e) => {
-        debugger
         var price = e.target.id
         var totalPrice = Number(price) + priceOfOneSeat
         setPricePerOneSeat(totalPrice)
@@ -43,8 +42,13 @@ function Seat() {
         <>
             <span className='seat-page row'>
                 <div className='seats col-md-3'>
+                    <div className='movie-heading'>
+                         {movieName}
+                    </div>
+                    <div>
                     {getScreen}
-                    <div>count : {numberOfSeats}</div>
+                    </div>
+                    <div><span  style={{color: "red"}}>count</span> : {numberOfSeats}</div>
                     <div>
                         {numberOfSeats > 0 ?
                         <Link className='submit-link' to="/booking" state={{ seats: numberOfSeats, price: priceOfOneSeat, idOfTheater: theaterId, theaterName: theaterName }}>pay {priceOfOneSeat} rs.</Link>
