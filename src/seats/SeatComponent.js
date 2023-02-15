@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 
 function Seat() {
     var location = useLocation();
+    var showId = location.state.showId;
     var theaterId = location.state.theaterId;
     var movieId = location.state.movieId;
     var theaterName = location.state.theaterName;
