@@ -11,6 +11,7 @@ import ResetPassword from './reset-password/ResetComponent';
 import Seat from './seats/SeatComponent';
 import Show from './shows/ShowComponent';
 import Booking from './booking/BookingSummary';
+import AComponent from './demo/AComponent';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
             <Route exact path="/show" element={<Show />}></Route>
             <Route exact path="/seat" element={<Seat />}></Route>
             <Route exact path="/booking" element={<Booking />}></Route>
+            <Route exact path="/A" element={<AComponent />}></Route>
           </Routes>
         </div>
       </BrowserRouter>
