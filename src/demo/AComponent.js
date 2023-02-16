@@ -7,8 +7,12 @@ function AComponent() {
     const [numberOfSeats, setNumberOfSeats] = useState(0);
     const [selectedSeatCount, setSelectedSeatCount] = useState(0);
     const [disable, setDisable] = useState(false);
-
+    const initialState = [];
+    
+    const [inputs, setInputs] = useState(initialState);
     const [seats, setSeats] = useState(0);
+    const [seatId, setSeatId] = useState('');
+
     useEffect(() => {
     }, [])
 
@@ -31,19 +35,30 @@ function AComponent() {
         //  setDisable(true)
         debugger
         var checked = e.target.checked;
+        var seatValue = e.target.value;
         if (checked) {
+            inputs.push({
+                seatId: e.target.value,
+            });
             setSelectedSeatCount(selectedSeatCount + 1)
         }
         else {
+            setInputs((current) =>
+            current.filter((fruit) => fruit.seatId !== seatValue))
             setSelectedSeatCount(selectedSeatCount - 1)
         }
-        console.log("Seat selected")
+        console.log("Seat selected" , inputs)
     }
 
     return (
         <>
-        {selectedSeatCount}
+            {selectedSeatCount}:
             <div className="seatStructure">
+                <ul>
+                    {inputs.map(artist => (
+                        <li>{artist.seatId}</li>
+                    ))}
+                </ul> 
                 <center>
                     <table id="seatsBlock">
                         <p id="notification"></p>
