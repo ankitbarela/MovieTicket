@@ -21,13 +21,14 @@ function Booking() {
     const initialvalues = {
         theaterName: theaterName,
         movieName: localStorage.getItem('booking'),
-        numberOfSeats: numberOfSeats
+        numberOfSeats: numberOfSeats,
+        seatNumbers: ''
     };
     const [inputs, setInputs] = useState(initialvalues);
 
     useEffect(() => {
        // TODO Need to uncomment this api call function
-       // creatBookingDetail();     
+      // creatBookingDetail();     
        ConvertOnString();
     }, [])
 
@@ -43,6 +44,9 @@ function Booking() {
             body: JSON.stringify(inputs)
         }).then((response) => {
             response.json().then((result) => {
+                if (result.statusCode != 200) {
+                    console.log("booking not ragistered")
+                }
               console.log(result)
             })
         }).catch(err => {
@@ -56,8 +60,9 @@ function Booking() {
             stringaSeat = stringaSeat +  seat.seatId
            )
            setSeats(stringaSeat)
+           inputs.seatNumbers = stringaSeat;
+           console.log(seats)
      }
-    
 
     return (
         <>

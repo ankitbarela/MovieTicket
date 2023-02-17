@@ -13,7 +13,7 @@ function Seat() {
     var theaterName = location.state.theaterName;
     var movieName = localStorage.getItem('booking')
     const [items, setItems] = useState([])
-    const [priceOfOneSeat, setPricePerOneSeat] = useState(0)
+    const [priceOfOneSeat, setPricePerOneSeat] = useState(200)
 
     const [numberOfSeats, setNumberOfSeats] = useState(0);
     const [selectedSeatCount, setSelectedSeatCount] = useState(0);
@@ -23,24 +23,8 @@ function Seat() {
     const [inputs, setInputs] = useState(initialState);
     const [seats, setSeats] = useState(0);
     const [seatId, setSeatId] = useState('');
-
-    const handleChange = (e) => {
-        debugger
-        var totalSeats = e.target.value;
-        setNumberOfSeats(totalSeats)
-    }
-    const takeData = () => {
-        setNumberOfSeats(seats)
-        console.log("Number of Seats", numberOfSeats)
-    }
-
-    const updateTextArea = () => {
-        console.log("Seat select")
-    }
-
+    var totalPrice = inputs.length * priceOfOneSeat;
     const onSelectSeat = (e) => {
-        //  setDisable(true)
-        debugger
         var checked = e.target.checked;
         var seatValue = e.target.value;
         if (checked) {
@@ -51,7 +35,7 @@ function Seat() {
         }
         else {
             setInputs((current) =>
-                current.filter((fruit) => fruit.seatId !== seatValue))
+                current.filter((seat) => seat.seatId !== seatValue))
             setSelectedSeatCount(selectedSeatCount - 1)
         }
         console.log("Seat selected", inputs)
@@ -174,9 +158,8 @@ function Seat() {
                         </tr>
                     </table>
 
-                    {/* <br /><button onClick={updateTextArea}>Confirm Selection</button> */}
                     <br/>
-                    <Link className='submit-link' to="/booking" state={{ seats: numberOfSeats, price: priceOfOneSeat, idOfTheater: theaterId, theaterName: theaterName , selectedSeats : inputs }}>pay {priceOfOneSeat} rs.</Link>
+                    <Link className='submit-link' to="/booking" state={{ seats: inputs.length, price: totalPrice, idOfTheater: theaterId, theaterName: theaterName , selectedSeats : inputs }}>pay {totalPrice} rs.</Link>
                 </center>
             </div>
 
