@@ -14,7 +14,48 @@ function Seat() {
     var movieName = localStorage.getItem('booking')
     const [items, setItems] = useState([])
     const [priceOfOneSeat, setPricePerOneSeat] = useState(0)
-    const [numberOfSeats, setNumberOfSeats] = useState(0)
+
+    const [numberOfSeats, setNumberOfSeats] = useState(0);
+    const [selectedSeatCount, setSelectedSeatCount] = useState(0);
+    const [disable, setDisable] = useState(false);
+    const initialState = [];
+
+    const [inputs, setInputs] = useState(initialState);
+    const [seats, setSeats] = useState(0);
+    const [seatId, setSeatId] = useState('');
+
+    const handleChange = (e) => {
+        debugger
+        var totalSeats = e.target.value;
+        setNumberOfSeats(totalSeats)
+    }
+    const takeData = () => {
+        setNumberOfSeats(seats)
+        console.log("Number of Seats", numberOfSeats)
+    }
+
+    const updateTextArea = () => {
+        console.log("Seat select")
+    }
+
+    const onSelectSeat = (e) => {
+        //  setDisable(true)
+        debugger
+        var checked = e.target.checked;
+        var seatValue = e.target.value;
+        if (checked) {
+            inputs.push({
+                seatId: e.target.value,
+            });
+            setSelectedSeatCount(selectedSeatCount + 1)
+        }
+        else {
+            setInputs((current) =>
+                current.filter((fruit) => fruit.seatId !== seatValue))
+            setSelectedSeatCount(selectedSeatCount - 1)
+        }
+        console.log("Seat selected", inputs)
+    }
 
     useEffect(() => {
         fetch(`${HostUrl.hostUrl}/Screen`)
@@ -26,22 +67,22 @@ function Seat() {
             )
     }, [])
 
-    const seatClicked = (e) => {
-        var price = e.target.id
-        var totalPrice = Number(price) + priceOfOneSeat
-        setPricePerOneSeat(totalPrice)
-        var seatCount = totalPrice / Number(price)
-        setNumberOfSeats(seatCount)
-    }
+    // const seatClicked = (e) => {
+    //     var price = e.target.id
+    //     var totalPrice = Number(price) + priceOfOneSeat
+    //     setPricePerOneSeat(totalPrice)
+    //     var seatCount = totalPrice / Number(price)
+    //     setNumberOfSeats(seatCount)
+    // }
 
-    const getScreen =
-        items.filter(screen => screen.movieId == movieId && screen.theaterId == theaterId).map(filteredTheater => (
-            [...Array(filteredTheater.totalSeats)].map((e, i) => <a href="javascript:;" id={filteredTheater.pricePerSeat} onClick={seatClicked} key={i}>*</a>)
-        ))
+    // const getScreen =
+    //     items.filter(screen => screen.movieId == movieId && screen.theaterId == theaterId).map(filteredTheater => (
+    //         [...Array(filteredTheater.totalSeats)].map((e, i) => <a href="javascript:;" id={filteredTheater.pricePerSeat} onClick={seatClicked} key={i}>*</a>)
+    //     ))
 
     return (
         <>
-            <span className='seat-page row'>
+            {/* <span className='seat-page row'>
                 <div className='seats col-md-3'>
                     <div className='movie-heading'>
                          {movieName}
@@ -57,7 +98,89 @@ function Seat() {
                     </div>}
                     </div>
                 </div>
-            </span>
+            </span> */}
+
+            <div className="seatStructure">
+                <center>
+                    <table id="seatsBlock">
+                        <p id="notification"></p>
+                        <tr>
+                            <td colspan="6"><div className="screen">SCREEN</div></td>
+                            <br />
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td>A</td>
+                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="A1" /></td>
+                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="A2" /></td>
+                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="A3" /></td>
+                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="A4" /></td>
+                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="A5" /></td>
+                        </tr>
+
+                        <tr>
+                            <td>B</td>
+                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="B1" /></td>
+                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="B2" /></td>
+                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="B3" /></td>
+                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="B4" /></td>
+                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="B5" /></td>
+                        </tr>
+
+                        <tr>
+                            <td>C</td>
+                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="C1" /></td>
+                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="C2" /></td>
+                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="C3" /></td>
+                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="C4" /></td>
+                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="C5" /></td>
+                        </tr>
+
+                        <tr>
+                            <td>D</td>
+                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="D1" /></td>
+                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="D2" /></td>
+                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="D3" /></td>
+                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="D4" /></td>
+                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="D5" /></td>
+                        </tr>
+
+                        <tr>
+                            <td>E</td>
+                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="E1" /></td>
+                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="E2" /></td>
+                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="E2" /></td>
+                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="E3" /></td>
+                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="E4" /></td>
+                        </tr>
+
+                        <tr>
+                            <td>F</td>
+                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="F1" /></td>
+                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="F2" /></td>
+                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="F3" /></td>
+                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="F4" /></td>
+                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="F5" /></td>
+                        </tr>
+                    </table>
+
+                    {/* <br /><button onClick={updateTextArea}>Confirm Selection</button> */}
+                    <br/>
+                    <Link className='submit-link' to="/booking" state={{ seats: numberOfSeats, price: priceOfOneSeat, idOfTheater: theaterId, theaterName: theaterName , selectedSeats : inputs }}>pay {priceOfOneSeat} rs.</Link>
+                </center>
+            </div>
+
+            <br /><br />
         </>
     );
 }

@@ -12,8 +12,12 @@ function Booking() {
     var totalPrice = location.state.price;
     var theaterId = location.state.idOfTheater;
     var theaterName = location.state.theaterName;
+    var selectedSeats = location.state.selectedSeats;
 
     const [items, setItems] = useState([])
+    const [seats, setSeats] = useState('')
+    var stringaSeat = '';
+
     const initialvalues = {
         theaterName: theaterName,
         movieName: localStorage.getItem('booking'),
@@ -23,7 +27,8 @@ function Booking() {
 
     useEffect(() => {
        // TODO Need to uncomment this api call function
-       // creatBookingDetail();       
+       // creatBookingDetail();     
+       ConvertOnString();
     }, [])
 
     const creatBookingDetail =() =>{
@@ -44,6 +49,15 @@ function Booking() {
             console.log(err);
         });
     }
+
+     const ConvertOnString =()=>{
+        debugger
+            selectedSeats.map((seat)=>
+            stringaSeat = stringaSeat +  seat.seatId
+           )
+           setSeats(stringaSeat)
+     }
+    
 
     return (
         <>
@@ -66,6 +80,10 @@ function Booking() {
                 <div className='detail'>
                     <span className='heading'> Price :</span>
                     {totalPrice}
+                </div>
+                <div className='detail'>
+                    <span className='heading'> selectedSeats :</span>
+                    {seats}
                 </div>
             </div>
         </>

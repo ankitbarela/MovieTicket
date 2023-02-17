@@ -13,10 +13,6 @@ function AComponent() {
     const [seats, setSeats] = useState(0);
     const [seatId, setSeatId] = useState('');
 
-    useEffect(() => {
-    }, [])
-
-
     const handleChange = (e) => {
         debugger
         var totalSeats = e.target.value;
