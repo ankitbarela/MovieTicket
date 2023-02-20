@@ -24,6 +24,7 @@
     width: 100px !important;
     background: green;
     color: white;
+    text-decoration: none;
 }
 
 .seat-page .seats{
@@ -37,4 +38,16 @@
     background: crimson;
     color: white;
 }
+.selected{
+    background: #eee!important;
+    cursor: default;
+    color: #fff!important;
+}
 
+.selected:before {
+    background: #eee!important;
+    cursor: default;
+    color: #fff!important;
+    cursor: default;
+    pointer-events:none;
+}

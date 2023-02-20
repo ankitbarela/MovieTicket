@@ -17,6 +17,7 @@ function Booking() {
     const [items, setItems] = useState([])
     const [seats, setSeats] = useState('')
     var stringaSeat = '';
+    var sfjs = [];
 
     const initialvalues = {
         theaterName: theaterName,
@@ -30,6 +31,7 @@ function Booking() {
        // TODO Need to uncomment this api call function
       // creatBookingDetail();     
        ConvertOnString();
+       localStorage.setItem('selectedSeats',JSON.stringify(selectedSeats))
     }, [])
 
     const creatBookingDetail =() =>{
