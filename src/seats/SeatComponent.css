@@ -44,8 +44,15 @@
     color: #fff!important;
 }
 
+.sold:before {
+    background: lightblue!important;
+    cursor: default;
+    color: #fff!important;
+    cursor: default;
+    pointer-events:none;
+}
 .selected:before {
-    background: #eee!important;
+    background: green!important;
     cursor: default;
     color: #fff!important;
     cursor: default;

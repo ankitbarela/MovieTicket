@@ -18,7 +18,7 @@ function Seat() {
     const [disable, setDisable] = useState(false);
     const initialState = [];
     const [bookedSeats, setBookedSeats] = useState([])
-    let seated = "";
+    var seated = "";
 
     const [inputs, setInputs] = useState(initialState);
     var totalPrice = inputs.length * priceOfOneSeat;
@@ -48,9 +48,14 @@ function Seat() {
             )
         var getBookedseats = localStorage.getItem('selectedSeats')
         var array = JSON.parse(getBookedseats)
+        console.log(array)
         setBookedSeats(array)
     }, [])
-
+    bookedSeats.map(seat =>
+        { seated = seat.seatId
+     console.log(seated)}
+         )
+         
     return (
         <>
         {seated}
@@ -62,7 +67,6 @@ function Seat() {
                             <td colspan="6"><div className="screen">SCREEN</div></td>
                             <br />
                         </tr>
-
                         <tr>
                             <td></td>
                             <td>1</td>
@@ -75,8 +79,8 @@ function Seat() {
 
                         <tr>
                             <td>A</td>
-                            <td><input disabled={disable} type="checkbox" className={seated == "A1" ? 'selected' : ''}  onClick={onSelectSeat} value="A1" /></td>
-                            <td><input disabled={disable} type="checkbox" className={seated == "A2" ? 'selected' : ''} onClick={onSelectSeat} value="A2" /></td>
+                            <td><input disabled={disable} type="checkbox" className={seated == 'A1' ? 'sold' : ''}  onClick={onSelectSeat} value="A1" /></td>
+                            <td><input disabled={disable} type="checkbox" className={seated == 'A2' ? 'sold' : ''} onClick={onSelectSeat} value="A2" /></td>
                             <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="A3" /></td>
                             <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="A4" /></td>
                             <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="A5" /></td>
@@ -140,12 +144,12 @@ function Seat() {
                     <span>Sold</span>
                 </span>
                 <span>
-                    <input type="checkbox" className="available" />
+                    <input type="checkbox" />
                     <span>Available</span>
                 </span>
                 <span>
                     <input type="checkbox" className='selected' />
-                    <span>Available</span>
+                    <span>Selected</span>
                 </span>
             </div>
         </>
