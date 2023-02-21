@@ -19,6 +19,7 @@ function Seat() {
     const initialState = [];
     const [bookedSeats, setBookedSeats] = useState([])
     var seated = "";
+    var seatId = "A1";
 
     const [inputs, setInputs] = useState(initialState);
     var totalPrice = inputs.length * priceOfOneSeat;
@@ -51,14 +52,27 @@ function Seat() {
         console.log(array)
         setBookedSeats(array)
     }, [])
+
     bookedSeats.map(seat =>
         { seated = seat.seatId
      console.log(seated)}
          )
+
+         const getBackgroundColor = (id) => {
+            return  bookedSeats.some(e => e.seatId == id) ? 'yellow' : 'red';
+         }
+       
+       //  className={'sold' +'-'+  seatId}
          
     return (
         <>
         {seated}
+        <div  style={{background: getBackgroundColor('A1')}}>
+            sdcsdc
+        </div>
+        <div>
+        <input style={{background: getBackgroundColor('A1')}} type="checkbox"/>
+        </div>
             <div className="seatStructure">
                 <center>
                     <table id="seatsBlock">
@@ -67,6 +81,7 @@ function Seat() {
                             <td colspan="6"><div className="screen">SCREEN</div></td>
                             <br />
                         </tr>
+                  
                         <tr>
                             <td></td>
                             <td>1</td>
@@ -79,7 +94,7 @@ function Seat() {
 
                         <tr>
                             <td>A</td>
-                            <td><input disabled={disable} type="checkbox" className={seated == 'A1' ? 'sold' : ''}  onClick={onSelectSeat} value="A1" /></td>
+                            <td><input disabled={disable} type="checkbox"    onClick={onSelectSeat} value="A1" /></td>
                             <td><input disabled={disable} type="checkbox" className={seated == 'A2' ? 'sold' : ''} onClick={onSelectSeat} value="A2" /></td>
                             <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="A3" /></td>
                             <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="A4" /></td>
