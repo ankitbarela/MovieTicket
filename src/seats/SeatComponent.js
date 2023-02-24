@@ -33,25 +33,22 @@ function Seat() {
     }, [])
 
     const getBookedSeats = ()=>{
-        debugger
         fetch(`${HostUrl.hostUrl}/BookedSeat`)
         .then(res => res.json())
         .then(
             (result) => {
-                setNotAvailableSeats(result);
+                var array = [];
+                result.filter(e => e.showId == showId).map(seat=> 
+                      array.push(
+                          {seatId : seat.bokeedSeatNumber
+                          }
+                      )
+                  ) 
                 console.log("this is from api",result)
+                setBookedSeats(array)
+                console.log("this is for sdijfn",array)
             }
         )
-        var array = [];
-      notAvailableSeats.filter(e => e.showId == showId).map(seat=> 
-            array.push(
-                {seatId : seat.bokeedSeatNumber
-                }
-            )
-        ) 
-        debugger
-        setBookedSeats(array)
-        console.log("this is for sdijfn",array)
     }
     const onSelectSeat = (e) => {
         var selected = e.target.id;
@@ -73,7 +70,7 @@ function Seat() {
             <div className='seat-page'>
                 <table>
                     <tbody>
-                        <tr>
+                        <tr >
                             {seats.map(seat =>
                                 <td>
                                     <a href="javascript:;" id={seat.seatNumber} className={(bookedSeats.some(e=>e.seatId == seat.seatNumber) ? 'booked' :(inputs.some(e => e.seatId == seat.seatNumber) ? 'selected' : ''))} onClick={onSelectSeat}>{seat.seatId}</a>
