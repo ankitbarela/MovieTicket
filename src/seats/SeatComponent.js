@@ -20,6 +20,7 @@ function Seat() {
     const initialState = [];
     const [inputs, setInputs] = useState(initialState);
     var totalPrice = inputs.length * priceOfOneSeat;
+ 
 
     useEffect(() => {
         fetch(`${HostUrl.hostUrl}/Seats`)
@@ -44,13 +45,12 @@ function Seat() {
                           }
                       )
                   ) 
-                console.log("this is from api",result)
                 setBookedSeats(array)
-                console.log("this is for sdijfn",array)
             }
         )
     }
     const onSelectSeat = (e) => {
+        debugger
         var selected = e.target.id;
         seats.filter(e=> e.seatNumber == Number(selected)).map(seat=>
             setPricePerOneSeat(seat.pricePerSeat))
@@ -59,13 +59,18 @@ function Seat() {
             inputs.push({
                 seatId: selected
             });
+            console.log(inputs)
+        }
+        else{
+         var index =   inputs.findIndex(obj => obj.seatId === selected);
+         inputs.splice(index, 1)
         }
     }
 
     return (
         <>
             <h1>
-                this is seat page{bookedSeats.length}
+                this is seat page
             </h1>
             <div className='seat-page'>
                 <table>
@@ -73,7 +78,7 @@ function Seat() {
                         <tr >
                             {seats.map(seat =>
                                 <td>
-                                    <a href="javascript:;" id={seat.seatNumber} className={(bookedSeats.some(e=>e.seatId == seat.seatNumber) ? 'booked' :(inputs.some(e => e.seatId == seat.seatNumber) ? 'selected' : ''))} onClick={onSelectSeat}>{seat.seatId}</a>
+                                    <a href="javascript:;" id={seat.seatNumber} className={(bookedSeats.some(e=>e.seatId == seat.seatNumber) ? 'booked' :(inputs.some(e => e.seatId == seat.seatNumber)  ? 'selected' : ''))} onClick={onSelectSeat}>{seat.seatId}</a>
                                 </td>
                             )}
                         </tr>

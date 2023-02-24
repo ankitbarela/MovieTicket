@@ -2,14 +2,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './HomeComponent.css';
 import { useEffect, useState } from 'react';
 import City from '../city/CityComponent';
-
+import { useParams } from "react-router-dom"
 
 
 
 function Home() {
   const [show, setShow] = useState(false);
   const [item, setItem] = useState();
-
   useEffect(() => {
     setTimeout(() => setShow(true), 2000);
   }, []);

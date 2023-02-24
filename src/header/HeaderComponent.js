@@ -15,6 +15,8 @@ function Header() {
         .then(
             (result) => {
                 setUserName(result.name)
+                console.log(result)
+                localStorage.setItem('loggedUser', JSON.stringify(result))
             }
         )
         getAuthorityToken();
@@ -57,8 +59,11 @@ function Header() {
                                 </li>
                             </ul> :
                                 <ul className="navbar-nav">
+                                     <li className="nav-item">
+                                        <a className="nav-link active" href="/">{userName}</a>
+                                    </li>
                                     <li className="nav-item">
-                                        <a className="nav-link active" onClick={logout}  href="/">{userName}</a>
+                                        <a className="nav-link active" onClick={logout}  href="/">Logout</a>
                                     </li>
                                     <li className="nav-item">
                                         <a className="nav-link active" href="/">Home</a>

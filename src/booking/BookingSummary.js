@@ -16,6 +16,7 @@ function Booking() {
     var showId = location.state.showId;
 
     const [seats, setSeats] = useState('')
+    const [user, setUser] = useState({})
     var stringaSeat = '';
 
     const initialvalues = {
@@ -24,7 +25,8 @@ function Booking() {
         numberOfSeats: numberOfSeats,
         seatNumbers: '',
         bookedSeats : [],
-        showId : showId
+        showId : showId,
+        userId : 0
     };
     const [inputs, setInputs] = useState(initialvalues);
 
@@ -33,6 +35,8 @@ function Booking() {
         ConvertOnString();
         creatBookingDetail();     
         localStorage.setItem('selectedSeats', JSON.stringify(selectedSeats))
+        var activeUser = JSON.parse(localStorage.getItem('loggedUser'));
+        setUser(activeUser);
     }, [])
 
     const creatBookingDetail = () => {
@@ -66,6 +70,7 @@ function Booking() {
            }
         )
         setSeats(stringaSeat)
+        inputs.userId = user.userId
         console.log(seats)
         console.log(selectedSeats)
     }
@@ -95,6 +100,14 @@ function Booking() {
                 <div className='detail'>
                     <span className='heading'> selectedSeats :</span>
                     {seats}
+                </div>
+                <div className='detail'>
+                    <span className='heading'> UserName :</span>
+                    {user.name}
+                </div>
+                <div className='detail'>
+                    <span className='heading'> Email :</span>
+                    {user.email}
                 </div>
             </div>
         </>

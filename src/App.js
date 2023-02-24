@@ -25,7 +25,6 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Home />}></Route>
             <Route exact path="/movie" element={<Movie />}></Route>
-            <Route exact path="/p" element={<Header />}></Route>
             <Route exact path="/terms" element={<TermsCondition />}></Route>
             <Route exact path="/login" element={<Login />}></Route>
             <Route exact path="/ragister" element={<Ragister />}></Route>
