@@ -13,6 +13,7 @@ function Booking() {
     var theaterId = location.state.idOfTheater;
     var theaterName = location.state.theaterName;
     var selectedSeats = location.state.selectedSeats;
+    var showId = location.state.showId;
 
     const [seats, setSeats] = useState('')
     var stringaSeat = '';
@@ -22,14 +23,15 @@ function Booking() {
         movieName: localStorage.getItem('booking'),
         numberOfSeats: numberOfSeats,
         seatNumbers: '',
-        bookedSeats : []
+        bookedSeats : [],
+        showId : showId
     };
     const [inputs, setInputs] = useState(initialvalues);
 
     useEffect(() => {
         // TODO Need to uncomment this api call function
         ConvertOnString();
-       // creatBookingDetail();     
+        creatBookingDetail();     
         localStorage.setItem('selectedSeats', JSON.stringify(selectedSeats))
     }, [])
 

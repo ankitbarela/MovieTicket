@@ -65,7 +65,7 @@ function Seat() {
                 </table>
                 {inputs.length > 0 ?
                     <div>
-                        <Link className='submit-link' to="/booking" state={{ seats: inputs.length, price: totalPrice, idOfTheater: theaterId, theaterName: theaterName, selectedSeats: inputs }}>pay {totalPrice} rs.</Link>
+                        <Link className='submit-link' to="/booking" state={{ seats: inputs.length, price: totalPrice, idOfTheater: theaterId, theaterName: theaterName, selectedSeats: inputs , showId :showId }}>pay {totalPrice} rs.</Link>
                     </div> : <div></div>
                 }
             </div>
