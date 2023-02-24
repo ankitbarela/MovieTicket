@@ -1,11 +1,22 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './HeaderComponent.css';
 import { useEffect, useState } from 'react';
+import HostUrl from '../HostUrl.json'
+
 
 function Header() {
     const [isLoggedIn,setIsLoggedIn] = useState(false);
+    const [userName,setUserName] = useState("");
+    var userId = localStorage.getItem('userId');
 
     useEffect(() => {
+        fetch(`${HostUrl.hostUrl}/User/${userId}`)
+        .then(res => res.json())
+        .then(
+            (result) => {
+                setUserName(result.name)
+            }
+        )
         getAuthorityToken();
     }, [])
 
@@ -47,7 +58,7 @@ function Header() {
                             </ul> :
                                 <ul className="navbar-nav">
                                     <li className="nav-item">
-                                        <a className="nav-link active" onClick={logout}  href="/">Logout</a>
+                                        <a className="nav-link active" onClick={logout}  href="/">{userName}</a>
                                     </li>
                                     <li className="nav-item">
                                         <a className="nav-link active" href="/">Home</a>

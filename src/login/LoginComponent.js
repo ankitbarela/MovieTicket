@@ -34,10 +34,11 @@ function Login() {
         }).then((response) => {
             response.json().then((result) => {
                 if (result.statusCode == 200) {
-                    updateToken(result.value);
+                    updateToken(result.value.token);
                     setItem(result);
                     navigate("/");
                     window.location.reload();
+                    localStorage.setItem('userId' , result.value.userId)
                 }
                 else {
                     setValid(true);
