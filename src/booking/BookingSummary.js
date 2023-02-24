@@ -14,27 +14,26 @@ function Booking() {
     var theaterName = location.state.theaterName;
     var selectedSeats = location.state.selectedSeats;
 
-    const [items, setItems] = useState([])
     const [seats, setSeats] = useState('')
     var stringaSeat = '';
-    var sfjs = [];
 
     const initialvalues = {
         theaterName: theaterName,
         movieName: localStorage.getItem('booking'),
         numberOfSeats: numberOfSeats,
-        seatNumbers: ''
+        seatNumbers: '',
+        bookedSeats : []
     };
     const [inputs, setInputs] = useState(initialvalues);
 
     useEffect(() => {
-       // TODO Need to uncomment this api call function
-      // creatBookingDetail();     
-       ConvertOnString();
-       localStorage.setItem('selectedSeats',JSON.stringify(selectedSeats))
+        // TODO Need to uncomment this api call function
+        ConvertOnString();
+       // creatBookingDetail();     
+        localStorage.setItem('selectedSeats', JSON.stringify(selectedSeats))
     }, [])
 
-    const creatBookingDetail =() =>{
+    const creatBookingDetail = () => {
         fetch(`${HostUrl.hostUrl}/BookingSummary`, {
             method: 'POST',
             headers: {
@@ -49,22 +48,25 @@ function Booking() {
                 if (result.statusCode != 200) {
                     console.log("booking not ragistered")
                 }
-              console.log(result)
+                console.log(result)
             })
         }).catch(err => {
             console.log(err);
         });
     }
 
-     const ConvertOnString =()=>{
+    const ConvertOnString = () => {
         debugger
-            selectedSeats.map((seat)=>
-            stringaSeat = stringaSeat +  seat.seatId
-           )
-           setSeats(stringaSeat)
-           inputs.seatNumbers = stringaSeat;
-           console.log(seats)
-     }
+        selectedSeats.map((seat) =>
+           {
+            stringaSeat =   seat.seatId +','+ stringaSeat;
+            inputs.bookedSeats.push(seat.seatId);
+           }
+        )
+        setSeats(stringaSeat)
+        console.log(seats)
+        console.log(selectedSeats)
+    }
 
     return (
         <>

@@ -12,160 +12,62 @@ function Seat() {
     var movieId = location.state.movieId;
     var theaterName = location.state.theaterName;
     var movieName = localStorage.getItem('booking')
-    const [items, setItems] = useState([])
-    const [priceOfOneSeat, setPricePerOneSeat] = useState(200)
-    const [selectedSeatCount, setSelectedSeatCount] = useState(0);
-    const [disable, setDisable] = useState(false);
-    const initialState = [];
+    const [seats, setSeats] = useState([])
+    const [priceOfOneSeat, setPricePerOneSeat] = useState(0)
     const [bookedSeats, setBookedSeats] = useState([])
-    var seated = "";
-    var seatId = "A1";
-
+    const [selectedSeat, setSelectedSeat] = useState(0);
+    const initialState = [];
     const [inputs, setInputs] = useState(initialState);
     var totalPrice = inputs.length * priceOfOneSeat;
-    const onSelectSeat = (e) => {
-        var checked = e.target.checked;
-        var seatValue = e.target.value;
-        if (checked) {
-            inputs.push({
-                seatId: e.target.value,
-            });
-            setSelectedSeatCount(selectedSeatCount + 1)
-        }
-        else {
-            setInputs((current) =>
-                current.filter((seat) => seat.seatId !== seatValue))
-            setSelectedSeatCount(selectedSeatCount - 1)
-        }
-    }
 
     useEffect(() => {
-        fetch(`${HostUrl.hostUrl}/Screen`)
+        fetch(`${HostUrl.hostUrl}/Seats`)
             .then(res => res.json())
             .then(
                 (result) => {
-                    setItems(result);
+                    setSeats(result);
                 }
             )
-        var getBookedseats = localStorage.getItem('selectedSeats')
-        var array = JSON.parse(getBookedseats)
-        console.log(array)
-        setBookedSeats(array)
+            var booked = localStorage.getItem('selectedSeats');
+            var parse = JSON.parse(booked);
+            setBookedSeats(parse)
+            console.log(parse)
     }, [])
 
-    bookedSeats.map(seat =>
-        { seated = seat.seatId
-     console.log(seated)}
-         )
+    const onSelectSeat = (e) => {
+        var selected = e.target.id;
+        seats.filter(e=> e.seatNumber == Number(selected)).map(seat=>
+            setPricePerOneSeat(seat.pricePerSeat))
+        if (!inputs.some(e => e.seatId == selected)) {
+            setSelectedSeat(Number(selected))
+            inputs.push({
+                seatId: selected
+            });
+        }
+    }
 
-         const getBackgroundColor = (id) => {
-            return  bookedSeats.some(e => e.seatId == id) ? 'yellow' : 'red';
-         }
-       
-       //  className={'sold' +'-'+  seatId}
-         
     return (
         <>
-        {seated}
-        <div  style={{background: getBackgroundColor('A1')}}>
-            sdcsdc
-        </div>
-        <div>
-        <input style={{background: getBackgroundColor('A1')}} type="checkbox"/>
-        </div>
-            <div className="seatStructure">
-                <center>
-                    <table id="seatsBlock">
-                        <p id="notification"></p>
+            <h1>
+                this is seat page{bookedSeats.length}:{priceOfOneSeat}
+            </h1>
+            <div className='seat-page'>
+                <table>
+                    <tbody>
                         <tr>
-                            <td colspan="6"><div className="screen">SCREEN</div></td>
-                            <br />
+                            {seats.map(seat =>
+                                <td>
+                                    <a href="javascript:;" id={seat.seatNumber} className={(bookedSeats.some(e=>e.seatId == seat.seatNumber) ? 'booked' :(inputs.some(e => e.seatId == seat.seatNumber) ? 'selected' : ''))} onClick={onSelectSeat}>{seat.seatId}</a>
+                                </td>
+                            )}
                         </tr>
-                  
-                        <tr>
-                            <td></td>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td>A</td>
-                            <td><input disabled={disable} type="checkbox"    onClick={onSelectSeat} value="A1" /></td>
-                            <td><input disabled={disable} type="checkbox" className={seated == 'A2' ? 'sold' : ''} onClick={onSelectSeat} value="A2" /></td>
-                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="A3" /></td>
-                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="A4" /></td>
-                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="A5" /></td>
-                        </tr>
-
-                        <tr>
-                            <td>B</td>
-                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="B1" /></td>
-                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="B2" /></td>
-                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="B3" /></td>
-                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="B4" /></td>
-                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="B5" /></td>
-                        </tr>
-
-                        <tr>
-                            <td>C</td>
-                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="C1" /></td>
-                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="C2" /></td>
-                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="C3" /></td>
-                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="C4" /></td>
-                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="C5" /></td>
-                        </tr>
-
-                        <tr>
-                            <td>D</td>
-                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="D1" /></td>
-                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="D2" /></td>
-                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="D3" /></td>
-                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="D4" /></td>
-                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="D5" /></td>
-                        </tr>
-
-                        <tr>
-                            <td>E</td>
-                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="E1" /></td>
-                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="E2" /></td>
-                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="E2" /></td>
-                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="E3" /></td>
-                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="E4" /></td>
-                        </tr>
-
-                        <tr>
-                            <td>F</td>
-                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="F1" /></td>
-                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="F2" /></td>
-                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="F3" /></td>
-                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="F4" /></td>
-                            <td><input disabled={disable} type="checkbox" className="seats" onClick={onSelectSeat} value="F5" /></td>
-                        </tr>
-                    </table>
-
-                    <br />
-                    <Link className='submit-link' to="/booking" state={{ seats: inputs.length, price: totalPrice, idOfTheater: theaterId, theaterName: theaterName, selectedSeats: inputs }}>pay {totalPrice} rs.</Link>
-                </center>
-            </div>
-
-            <br /><br />
-            <div className='sign-box'>
-                <span>
-                    <input type="checkbox" className="sold" />
-                    <span>Sold</span>
-                </span>
-                <span>
-                    <input type="checkbox" />
-                    <span>Available</span>
-                </span>
-                <span>
-                    <input type="checkbox" className='selected' />
-                    <span>Selected</span>
-                </span>
+                    </tbody>
+                </table>
+                {inputs.length > 0 ?
+                    <div>
+                        <Link className='submit-link' to="/booking" state={{ seats: inputs.length, price: totalPrice, idOfTheater: theaterId, theaterName: theaterName, selectedSeats: inputs }}>pay {totalPrice} rs.</Link>
+                    </div> : <div></div>
+                }
             </div>
         </>
     );

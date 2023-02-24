@@ -1,22 +1,27 @@
- .seat-page a {
+.seat-page a {
+    background: #fff;
+    border: 1px solid green;
+    padding: -3px;
     text-decoration: none;
-    border: 1px solid;
-    padding: 1px;
-    margin-left: 18px;
-    width: 30px;
-    margin-top: 12px;
-    display: inline-block;
+    float: left;
+    margin-left: 14px;
+    padding: 3px;
+    height: 18px;
+    font-size: 12px;
+    line-height: 12px;
+    width: 20px;
+    color: green;
+    border-radius: 2px;
 }
 
-.seat-page {
-    margin-bottom: 20px;
-    display: inline-flex;
-} 
-
-.seat-page a:focus {
-    background: green;
-    border-color: green;
+.seat-page a:hover {
+    background-color: green;
     color: white;
+}
+
+.selected {
+    background-color: green !important;
+    color: white !important;
 }
 
 .submit-link{
@@ -27,32 +32,8 @@
     text-decoration: none;
 }
 
-.seat-page .seats{
-    margin-top: 30px;
-    position: relative;
-    top: 50px;
-    left: 30%;
-}
-
-.movie-heading{
-    background: crimson;
-    color: white;
-}
-.selected{
-    background: #eee!important;
-    cursor: default;
-    color: #fff!important;
-}
-
-.sold:before {
-    background: lightblue!important;
-    cursor: default;
-    color: #fff!important;
-    cursor: default;
-    pointer-events:none;
-}
-.selected:before {
-    background: green!important;
+.booked{
+    background: grey!important;
     cursor: default;
     color: #fff!important;
     cursor: default;
