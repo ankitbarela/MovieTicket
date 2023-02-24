@@ -15,6 +15,7 @@ function Seat() {
     const [seats, setSeats] = useState([])
     const [priceOfOneSeat, setPricePerOneSeat] = useState(0)
     const [bookedSeats, setBookedSeats] = useState([])
+    const [notAvailableSeats, setNotAvailableSeats] = useState([])
     const [selectedSeat, setSelectedSeat] = useState(0);
     const initialState = [];
     const [inputs, setInputs] = useState(initialState);
@@ -28,12 +29,30 @@ function Seat() {
                     setSeats(result);
                 }
             )
-            var booked = localStorage.getItem('selectedSeats');
-            var parse = JSON.parse(booked);
-            setBookedSeats(parse)
-            console.log(parse)
+            getBookedSeats();
     }, [])
 
+    const getBookedSeats = ()=>{
+        debugger
+        fetch(`${HostUrl.hostUrl}/BookedSeat`)
+        .then(res => res.json())
+        .then(
+            (result) => {
+                setNotAvailableSeats(result);
+                console.log("this is from api",result)
+            }
+        )
+        var array = [];
+      notAvailableSeats.filter(e => e.showId == showId).map(seat=> 
+            array.push(
+                {seatId : seat.bokeedSeatNumber
+                }
+            )
+        ) 
+        debugger
+        setBookedSeats(array)
+        console.log("this is for sdijfn",array)
+    }
     const onSelectSeat = (e) => {
         var selected = e.target.id;
         seats.filter(e=> e.seatNumber == Number(selected)).map(seat=>
@@ -49,7 +68,7 @@ function Seat() {
     return (
         <>
             <h1>
-                this is seat page{bookedSeats.length}:{priceOfOneSeat}
+                this is seat page{bookedSeats.length}
             </h1>
             <div className='seat-page'>
                 <table>

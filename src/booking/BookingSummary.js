@@ -31,7 +31,7 @@ function Booking() {
     useEffect(() => {
         // TODO Need to uncomment this api call function
         ConvertOnString();
-        creatBookingDetail();     
+       // creatBookingDetail();     
         localStorage.setItem('selectedSeats', JSON.stringify(selectedSeats))
     }, [])
 
