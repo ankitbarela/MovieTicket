@@ -62,8 +62,9 @@ function Seat() {
             console.log(inputs)
         }
         else{
-         var index =   inputs.findIndex(obj => obj.seatId === selected);
+         var index = inputs.findIndex(obj => obj.seatId === selected);
          inputs.splice(index, 1)
+         console.log(inputs)
         }
     }
 

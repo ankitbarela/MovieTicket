@@ -18,6 +18,17 @@
   box-sizing: border-box;
 }
 
+.login input[type=password] {
+  width: 90%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+
 .login input[type=submit] {
   width: 100%;
   background-color: #5e72e4;

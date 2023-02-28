@@ -33,7 +33,7 @@ function Booking() {
     useEffect(() => {
         // TODO Need to uncomment this api call function
         ConvertOnString();
-        creatBookingDetail();     
+      //  creatBookingDetail();     
         localStorage.setItem('selectedSeats', JSON.stringify(selectedSeats))
         var activeUser = JSON.parse(localStorage.getItem('loggedUser'));
         setUser(activeUser);
@@ -62,7 +62,6 @@ function Booking() {
     }
 
     const ConvertOnString = () => {
-        debugger
         selectedSeats.map((seat) =>
            {
             stringaSeat =   seat.seatId +','+ stringaSeat;
