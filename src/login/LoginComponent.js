@@ -2,9 +2,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './LoginComponent.css';
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux'
+import loginCreater from '../reducers/loginCreater'
+import { postLogin } from '../reducers/loginCreater';
 
 
 function Login() {
+  const dispatch = useDispatch()
+
     const userPerformance = {
         _token: null
     };
@@ -21,33 +26,33 @@ function Login() {
         setInputs({ ...inputs, [e.target.name]: e.target.value });
     }
 
-    const handleSubmit = () => {
-        fetch("https://localhost:7097/signin", {
-            method: 'POST',
-            headers: {
-                'access-control-allow-origin': '*',
-                'Access-Control-Allow-Headers': '*',
-                'Access-Control-Allow-Methods': '*',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(inputs)
-        }).then((response) => {
-            response.json().then((result) => {
-                if (result.statusCode == 200) {
-                    updateToken(result.value.token);
-                    setItem(result);
-                    navigate("/");
-                    window.location.reload();
-                    localStorage.setItem('userId' , result.value.userId)
-                }
-                else {
-                    setValid(true);
-                }
-            })
-        }).catch(err => {
-            console.log(err);
-        });
-    }
+    // const handleSubmit = () => {
+    //     fetch("https://localhost:7097/signin", {
+    //         method: 'POST',
+    //         headers: {
+    //             'access-control-allow-origin': '*',
+    //             'Access-Control-Allow-Headers': '*',
+    //             'Access-Control-Allow-Methods': '*',
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify(inputs)
+    //     }).then((response) => {
+    //         response.json().then((result) => {
+    //             if (result.statusCode == 200) {
+    //                 updateToken(result.value.token);
+    //                 setItem(result);
+    //                 navigate("/");
+    //                 window.location.reload();
+    //                 localStorage.setItem('userId' , result.value.userId)
+    //             }
+    //             else {
+    //                 setValid(true);
+    //             }
+    //         })
+    //     }).catch(err => {
+    //         console.log(err);
+    //     });
+    // }
 
     const updateToken = (token) => {
         userPerformance._token = token;
@@ -57,6 +62,13 @@ function Login() {
         else {
             localStorage.removeItem('tokenKey');
         }
+    }
+
+    const handleSubmit = ()=>{
+        debugger
+        dispatch(postLogin(inputs));
+      //  navigate("/");
+       // window.location.reload();
     }
 
     return (
