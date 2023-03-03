@@ -67,8 +67,8 @@ function Login() {
     const handleSubmit = ()=>{
         debugger
         dispatch(postLogin(inputs));
-      //  navigate("/");
-       // window.location.reload();
+        navigate("/");
+        window.location.reload();
     }
 
     return (

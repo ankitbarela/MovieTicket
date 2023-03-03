@@ -34,7 +34,7 @@ export const loginCreater = createSlice({
             console.log("this is an error here", action.payload)
             state.isError = true;
         });
-  }
+  },
 })
 
 export default loginCreater.reducer

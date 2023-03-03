@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './HeaderComponent.css';
 import { useEffect, useState } from 'react';
 import HostUrl from '../HostUrl.json'
+import { useSelector } from 'react-redux';
 
 
 function Header() {
@@ -9,13 +10,16 @@ function Header() {
     const [userName,setUserName] = useState("");
     var userId = localStorage.getItem('userId');
 
+  const loginDetail = useSelector((state) => state.login.data.value)
+
+console.log(loginDetail)
     useEffect(() => {
         fetch(`${HostUrl.hostUrl}/User/${userId}`)
         .then(res => res.json())
         .then(
             (result) => {
                 setUserName(result.name)
-                console.log(result)
+                console.log(result) 
                 localStorage.setItem('loggedUser', JSON.stringify(result))
             }
         )
@@ -44,7 +48,7 @@ function Header() {
                                 </a>
                             </li>
                         </ul>
-                            {!isLoggedIn ? <ul className="navbar-nav">
+                            {!loginDetail ? <ul className="navbar-nav">
                                 <li className="nav-item">
                                     <a className="nav-link active" href="/login">Login</a>
                                 </li>
