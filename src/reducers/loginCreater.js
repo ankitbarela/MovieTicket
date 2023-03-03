@@ -27,7 +27,7 @@ export const loginCreater = createSlice({
             state.isLoading = true;
         });
         builder.addCase(postLogin.fulfilled, (state , action) =>{
-            state.isLoading = false;
+            state.isLoading = true;
             state.data = action.payload;
         });
         builder.addCase(postLogin.rejected, (state , action) =>{
@@ -35,6 +35,13 @@ export const loginCreater = createSlice({
             state.isError = true;
         });
   },
+  reducers : {
+    reset(state){
+        state.isLoading = false
+        state.data = null
+    }
+  },
 })
 
+export const {reset} = loginCreater.actions
 export default loginCreater.reducer
