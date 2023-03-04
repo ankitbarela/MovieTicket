@@ -61,7 +61,7 @@ function ResetPassword() {
                     </div>
                     <div>
                         <input
-                            type="text"
+                            type="password"
                             className='form-control'
                             name="password"
                             placeholder="New Password"

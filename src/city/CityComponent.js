@@ -3,11 +3,14 @@ import './CityComponent.css';
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import HostUrl from '../HostUrl.json'
+import { useSelector } from 'react-redux';
 
 
 function City(props) {
     const [items, setItems] = useState([])
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    const isSignIn = useSelector((state) => state.login.isLoading)
 
     useEffect(() => {
         fetch(`${HostUrl.hostUrl}/City`)
@@ -18,7 +21,6 @@ function City(props) {
                     getAuthorityToken();
                 }
             )
-
     }, [])
 
     const getAuthorityToken = () => {
@@ -30,7 +32,7 @@ function City(props) {
 
     return (
         <>
-            {isLoggedIn ?
+            {isSignIn ?
                 <div className="city">
                     <h5 className='heading'>Choose Your City</h5>
                     <div className="cityies row">

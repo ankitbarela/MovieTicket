@@ -12,7 +12,6 @@ function Header() {
     var userId = localStorage.getItem('userId');
     const dispatch = useDispatch()
 
-    // const loginDetail = useSelector((state) => state.login.data.value)
     const isSignIn = useSelector((state) => state.login.isLoading)
     console.log("sign is or not",isSignIn)
     useEffect(() => {
