@@ -13,6 +13,7 @@ import Show from './shows/ShowComponent';
 import Booking from './booking/BookingSummary';
 import AComponent from './demo/AComponent';
 import Counter from './counter/counter';
+import Payment from './payment/PaymentComponent';
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
             <Route exact path="/booking" element={<Booking />}></Route>
             <Route exact path="/A" element={<AComponent />}></Route>
             <Route exact path="/counter" element={<Counter />}></Route>
+            <Route exact path="/payment" element={<Payment />}></Route>
           </Routes>
         </div>
       </BrowserRouter>

@@ -1,0 +1,27 @@
+.payment-container{
+    text-align: initial;
+    position: relative;
+    top: 12px;
+    left: 40px;
+}
+
+.payment-container .heading{
+    background: #f84464;
+    width: 50%;
+    padding: 10px;
+    color: white;
+}
+
+.payment-container input[type=text] {
+    width: 20%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  .payment-container button{
+    background-color: #f84464;
+  }
