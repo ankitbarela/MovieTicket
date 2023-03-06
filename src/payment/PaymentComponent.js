@@ -4,9 +4,9 @@ function Payment() {
     return (
         <div className='payment-container'>
             <div className='heading'>
-                Payment Option
+                Debit Card
             </div>
-            <div>
+            <div className='detail-heading'>
                 Enter Your Card Detail
             </div>
             <div className='card-detail'>
@@ -33,7 +33,7 @@ function Payment() {
                     </aside>
                 </div>
                 <div>
-                    <input type="text" placeholder='Cvv' />
+                    <input type="text" placeholder='Cvv' maxLength={4}/>
                 </div>
             </div>
              <div>

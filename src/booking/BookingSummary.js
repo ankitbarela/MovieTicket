@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './BookingComponent.css';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import HostUrl from '../HostUrl.json'
 import React, { useEffect, useState } from "react";
 
@@ -17,13 +17,14 @@ function Booking() {
 
     const [seats, setSeats] = useState('')
     const [user, setUser] = useState({})
+    const [bookingId , setBookingId] = useState(0)
     var stringaSeat = '';
 
     const initialvalues = {
         theaterName: theaterName,
         movieName: localStorage.getItem('booking'),
         numberOfSeats: numberOfSeats,
-        seatNumbers: '',
+        seatNumbers: "",
         bookedSeats : [],
         showId : showId,
         userId : 0
@@ -32,11 +33,10 @@ function Booking() {
 
     useEffect(() => {
         // TODO Need to uncomment this api call function
-        ConvertOnString();
-      //  creatBookingDetail();     
-        localStorage.setItem('selectedSeats', JSON.stringify(selectedSeats))
         var activeUser = JSON.parse(localStorage.getItem('loggedUser'));
         setUser(activeUser);
+        ConvertOnString();
+        creatBookingDetail();     
     }, [])
 
     const creatBookingDetail = () => {
@@ -54,7 +54,8 @@ function Booking() {
                 if (result.statusCode != 200) {
                     console.log("booking not ragistered")
                 }
-                console.log(result)
+                console.log("sdifhdshsins",result)
+                setBookingId(result.value)
             })
         }).catch(err => {
             console.log(err);
@@ -70,8 +71,7 @@ function Booking() {
         )
         setSeats(stringaSeat)
         inputs.userId = user.userId
-        console.log(seats)
-        console.log(selectedSeats)
+        inputs.seatNumbers = stringaSeat
     }
 
     return (
@@ -107,6 +107,9 @@ function Booking() {
                 <div className='detail'>
                     <span className='heading'> Email :</span>
                     {user.email}
+                </div>
+                <div>
+                    <Link to="/payment" state={{userId : user.userId , }}>Go For Payment</Link>
                 </div>
             </div>
         </>

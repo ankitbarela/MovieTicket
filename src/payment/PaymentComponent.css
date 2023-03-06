@@ -25,3 +25,7 @@
   .payment-container button{
     background-color: #f84464;
   }
+
+  .detail-heading{
+    margin: 12px 0;
+  }
