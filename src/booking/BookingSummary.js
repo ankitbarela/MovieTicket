@@ -36,7 +36,7 @@ function Booking() {
         var activeUser = JSON.parse(localStorage.getItem('loggedUser'));
         setUser(activeUser);
         ConvertOnString();
-        creatBookingDetail();     
+       // creatBookingDetail();     
     }, [])
 
     const creatBookingDetail = () => {
@@ -54,7 +54,7 @@ function Booking() {
                 if (result.statusCode != 200) {
                     console.log("booking not ragistered")
                 }
-                console.log("sdifhdshsins",result)
+                console.log(result.value)
                 setBookingId(result.value)
             })
         }).catch(err => {
@@ -109,7 +109,7 @@ function Booking() {
                     {user.email}
                 </div>
                 <div>
-                    <Link to="/payment" state={{userId : user.userId , }}>Go For Payment</Link>
+                    <Link to="/payment" state={{userId : user.userId ,bookingId : bookingId }}>Go For Payment</Link>
                 </div>
             </div>
         </>
