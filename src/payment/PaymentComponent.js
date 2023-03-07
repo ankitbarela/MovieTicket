@@ -13,9 +13,11 @@ function Payment() {
         cardName: "",
         cardNumber: "",
         expiry: "",
+        month : "",
+        year : "",
         cvv: null,
-        bookingId:0,
-        userId : 0
+        bookingId:bookingId,
+        userId : userId
     };
 
     const [inputs , setInputs] = useState(initialvalues)
@@ -24,7 +26,12 @@ function Payment() {
 
     },[])
 
-    const createPayment = () => {
+    const handleChange=(e)=>{
+        setInputs({...inputs, [e.target.name]:e.target.value})
+        console.log(inputs)
+    }
+
+    const makePayment = () => {
         fetch(`${HostUrl.hostUrl}/Payment`, {
             method: 'POST',
             headers: {
@@ -58,33 +65,37 @@ function Payment() {
                 <div>
                     <input
                         type="text"
-                        className='form-control'
+                        className='form-control card-detail'
+                        name='cardNumber'
                         placeholder="Enter Card Number"
                         value={inputs.cardNumber}
+                        onChange={handleChange}
                     />
                 </div>
                 <div>
                     <input
                         type="text"
-                        className='form-control'
+                        className='form-control card-detail'
+                        name='cardName'
                         placeholder="Enter Card Name"
                         value={inputs.cardName}
+                        onChange={handleChange}
                     />
                 </div>
                 <div>
                     <aside>
-                       <input type="text" placeholder="MM" maxLength={2} /> 
+                       <input type="text" name='month' placeholder="MM" maxLength={2} value={inputs.month} onChange={handleChange}/> 
                     </aside>
                     <aside>
-                       <input type="text" placeholder="YY" maxLength={2}/> 
+                       <input type="text" name='year' placeholder="YY" maxLength={2} value={inputs.year} onChange={handleChange}/> 
                     </aside>
                 </div>
                 <div>
-                    <input type="text" placeholder='Cvv' maxLength={4}/>
+                    <input type="number" name='cvv' placeholder='Cvv' maxLength={4} value={inputs.cvv} onChange={handleChange}/>
                 </div>
             </div>
              <div>
-                <button type="button" className='btn btn-danger'>Make Payment</button>
+                <button type="button" className='btn btn-danger' onClick={makePayment}>Make Payment</button>
              </div>
         </div>
     );

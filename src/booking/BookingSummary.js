@@ -27,7 +27,7 @@ function Booking() {
         seatNumbers: "",
         bookedSeats : [],
         showId : showId,
-        userId : 0
+        userId : localStorage.getItem('userId')
     };
     const [inputs, setInputs] = useState(initialvalues);
 
@@ -36,7 +36,7 @@ function Booking() {
         var activeUser = JSON.parse(localStorage.getItem('loggedUser'));
         setUser(activeUser);
         ConvertOnString();
-       // creatBookingDetail();     
+        creatBookingDetail();     
     }, [])
 
     const creatBookingDetail = () => {
@@ -70,7 +70,6 @@ function Booking() {
            }
         )
         setSeats(stringaSeat)
-        inputs.userId = user.userId
         inputs.seatNumbers = stringaSeat
     }
 
